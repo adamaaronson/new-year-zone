@@ -1,0 +1,24 @@
+@import '../main.scss';
+
+html {
+    height: 100%;
+}
+
+body {
+    background: $background-color;
+    height: 100%;
+    border: (2 * $spacing-unit) dotted $text-color;
+}
+
+.app {
+    color: $text-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: (2 * $spacing-unit) (6 * $spacing-unit);
+    display: flex;
+    flex-flow: row wrap;
+
+    @media (max-width: 500px) {
+        margin: (2 * $spacing-unit) (2 * $spacing-unit);
+    }
+}

@@ -1,0 +1,12 @@
+$background-color: #FFFF4F;
+$text-color: #FF6754;
+
+$spacing-unit: 16px;
+$standard-border: 3px solid $text-color;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}

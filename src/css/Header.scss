@@ -1,0 +1,25 @@
+@import '../main.scss';
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: $standard-border;
+    padding-bottom: 2 * $spacing-unit;
+    margin-bottom: 2 * $spacing-unit;
+}
+
+.header-logo {
+    font-size: 3rem;
+    line-height: 0.9em;
+
+    .header-year {
+        margin-left: 0.4em;
+    }
+
+    .header-zone {
+        margin-left: 1.8em;
+    }
+    padding: 10px;
+    // border: 10px dotted $text-color;
+}
