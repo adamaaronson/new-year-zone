@@ -4,9 +4,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    border-bottom: $standard-border;
-    padding-bottom: 2 * $spacing-unit;
-    margin-bottom: 2 * $spacing-unit;
+    // border-bottom: $standard-border;
+    // padding-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .header-logo {
@@ -21,5 +22,4 @@
         margin-left: 1.8em;
     }
     padding: 10px;
-    // border: 10px dotted $text-color;
 }

@@ -1,0 +1,30 @@
+@import '../main.scss';
+
+.main-countdown-section {
+    // margin: auto;
+}
+
+.up-next {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.main-time-zone-info {
+    display: flex;
+    flex-flow: row;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.main-time-zone-name {
+    flex: 0 1 auto;
+    width: fit-content;
+    line-height: 1.2em;
+    font-size: 1.5rem;
+}
+
+.main-time-zone-locations {
+    flex: 1;
+    line-height: 0.9em;
+    font-size: 3rem;
+}
