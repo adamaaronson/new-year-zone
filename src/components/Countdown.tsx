@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { TimeZone } from "./TimeZone";
 
 // source for a lot of this:
 // https://medium.com/@bsalwiczek/building-timer-in-react-its-not-as-simple-as-you-may-think-80e5f2648f9b
@@ -38,6 +39,20 @@ function getHours(timeInMilliseconds: number) {
 
 function getDays(timeInMilliseconds: number) {
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY).toString();
+}
+
+export function getNewYearInTimeZone(timeZone: TimeZone) {
+    const currentYear = new Date().getFullYear();
+    const localNewYearDate = new Date(currentYear + 1, 0, 1, 0, 0);
+
+    const localTimeZoneOffsetMinutes = new Date().getTimezoneOffset();
+    const timeZoneOffsetMinutes = timeZone.utc * MINUTES_PER_HOUR;
+    const differenceMinutes = -localTimeZoneOffsetMinutes - timeZoneOffsetMinutes;
+
+    let timeZoneNewYearDate = localNewYearDate;
+    timeZoneNewYearDate.setMinutes(timeZoneNewYearDate.getMinutes() + differenceMinutes);
+    
+    return timeZoneNewYearDate.getTime();
 }
 
 export function Countdown({ untilTime }: Props) {

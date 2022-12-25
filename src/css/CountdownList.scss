@@ -1,0 +1,58 @@
+@import '../main.scss';
+
+.countdown-list-section, .countdown-list, .countdown-list-row {
+    width: 100%;
+}
+
+.countdown-list {
+    padding-bottom: 3rem;
+}
+
+.countdown-list-row {
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-top: $standard-border;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.countdown-list-info {
+    text-align: right;
+    flex: auto;
+}
+
+.countdown-list-locations {
+    font-size: 3rem;
+    line-height: 1em;
+    margin-bottom: 1rem;
+    text-align: right;
+
+    display: flex;
+    flex-flow: column wrap;
+
+    // @media (max-width: 800px) {
+    //     flex-flow: column wrap;
+    // }
+    
+    // @media (min-width: 800px) {
+    //     .countdown-list-location:not(:last-child):after {
+    //         content: "\00a0/\00a0"
+    //     }
+    // }
+}
+
+.countdown-list-timer {
+    font-size: 6rem;
+    line-height: 1em;
+    flex: auto;
+
+    @media (max-width: 1200px) {
+        font-size: 4rem;
+    }
+}
+
+.countdown-list-timezone-name {
+    font-size: 1.5rem;
+}

@@ -4,14 +4,43 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     // border-bottom: $standard-border;
     // padding-bottom: 2rem;
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+
+    gap: 3rem;
+    position: relative;
+}
+
+.yearname {
+    position: absolute;
+    font-size: 20rem;
+    opacity: 0.2;
+    transform: rotate(-5deg) translateY(-0.5rem);
+
+    @media (max-width: 600px) {
+        font-size: 16rem;
+    }
+
+    // animation: 10s ease-in-out wobble infinite;
+}
+
+@keyframes wobble {
+    0% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(-5deg);
+    }
 }
 
 .header-logo {
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 0.9em;
 
     .header-year {
@@ -21,5 +50,12 @@
     .header-zone {
         margin-left: 1.8em;
     }
+
     padding: 10px;
+
+    transform: rotate(10deg);
+}
+
+.header-description {
+    font-size: 3rem;
 }

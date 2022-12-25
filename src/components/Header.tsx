@@ -2,6 +2,9 @@ import '../css/Header.scss';
 
 export function Header() {
     return <header className="header">
+        <div className="yearname">
+            2023
+        </div>
         <div className="header-logo">
             <div className="header-part header-new">
                 New

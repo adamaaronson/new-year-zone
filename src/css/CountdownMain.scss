@@ -1,28 +1,30 @@
 @import '../main.scss';
 
 .up-next {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.main-time-zone-info {
-    display: flex;
-    flex-flow: row;
-    gap: 2rem;
-    margin-bottom: 1rem;
+.main-up-next {
+    padding-bottom: 1rem;
+    border-bottom: $standard-border;
 }
 
 .main-time-zone-name {
-    flex: 0 1 auto;
-    width: fit-content;
+    text-align: right;
     line-height: 1.2em;
     font-size: 1.5rem;
 }
 
 .main-time-zone-locations {
-    flex: 1;
+    text-align: right;
+    font-size: 4rem;
     line-height: 0.9em;
-    font-size: 3rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 800px) {
+        font-size: 4rem;
+    }
 }
 
 .main-countdown-section {
@@ -43,4 +45,8 @@
 .main-until {
     text-align: right;
     font-size: 4rem;
+}
+
+.main-countdown {
+    margin-bottom: 3rem;
 }

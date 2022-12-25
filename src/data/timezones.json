@@ -1,0 +1,323 @@
+[
+    {
+        "utc": -12,
+        "name": "UTC-12",
+        "locations": [
+            "Baker Island",
+            "Howland Island"
+        ]
+    },
+    {
+        "utc": -11,
+        "name": "UTC-11",
+        "locations": [
+            "American Samoa",
+            "Niue"
+        ]
+    },
+    {
+        "utc": -10,
+        "name": "UTC-10",
+        "locations": [
+            "Hawaii",
+            "Cook Islands"
+        ]
+    },
+    {
+        "utc": -9.5,
+        "name": "UTC-9:30",
+        "locations": [
+            "Atuona, French Polynesia" 
+        ]
+    },
+    {
+        "utc": -9,
+        "name": "UTC-9",
+        "locations": [
+            "Alaska"
+        ]
+    },
+    {
+        "utc": -8,
+        "name": "UTC-8",
+        "locations": [
+            "Vancouver", 
+            "Tijuana", 
+            "Los Angeles", 
+            "San Francisco", 
+            "Seattle" 
+        ]
+    },
+    {
+        "utc": -7,
+        "name": "UTC-7",
+        "locations": [
+            "Aberta",
+            "Denver",
+            "Phoenix"
+        ]
+    },
+    {
+        "utc": -6,
+        "name": "UTC-6",
+        "locations": [
+            "Mexico City",
+            "Chicago",
+            "Dallas"
+        ]
+    },
+    {
+        "utc": -5,
+        "name": "UTC-5",
+        "locations": [
+            "Cancun", 
+            "New York", 
+            "Jamaica", 
+            "Montreal",
+            "Toronto"
+        ]
+    },
+    {
+        "utc": -4,
+        "name": "UTC-4",
+        "locations": [
+            "Antigua and Barbuda",
+            "Venezuela"
+        ]
+    },
+    {
+        "utc": -3.5,
+        "name": "UTC-3:30",
+        "locations": [
+            "Newfoundland and Labrador"
+        ]
+    },
+    {
+        "utc": 3,
+        "name": "UTC-3",
+        "locations": [
+            "Argentenia",
+            "HFrench Guiana",
+            "Uruguay"
+        ]
+    },
+    {
+        "utc": -2,
+        "name": "UTC-2",
+        "locations": [
+            "South Sandwich Islands" 
+        ]
+    },
+    {
+        "utc": -1,
+        "name": "UTC-1",
+        "locations": [
+            "Azores",
+            "Greenland"
+        ]
+    },
+    {
+        "utc": 0,
+        "name": "UTC",
+        "locations": [
+            "United Kingdom",
+            "Liberia",
+            "Saint Helena",
+            "Ivory Coast"
+        ]
+    },
+    {
+        "utc": 1,
+        "name": "UTC+1",
+        "locations": [
+            "Belgium", 
+            "Congo", 
+            "Paris", 
+            "Equitorial Guinea", 
+            "Nigeria", 
+            "Poland", 
+            "Spain"
+        ]
+    },
+    {
+        "utc": 2,
+        "name": "UTC+2",
+        "locations": [
+            "Bulgaria", 
+            "Burundi", 
+            "Estonia", 
+            "Zimbabwe"
+        ]
+    },
+    {
+        "utc": 3,
+        "name": "UTC+3",
+        "locations": [
+            "Saudi Arabia",
+            "Uganda", 
+            "Madagascar"
+        ]
+    },
+    {
+        "utc": 3.5,
+        "name": "UTC+3:30",
+        "locations": [
+            "Iran"
+        ]
+    },
+    {
+        "utc": 4,
+        "name": "UTC+4",
+        "locations": [
+            "Dubai",
+            "Georgia",
+            "Réunion"
+        ]
+    },
+    {
+        "utc": 4.5,
+        "name": "UTC+4:30",
+        "locations": [
+            "Afghanistan"
+        ]
+    },
+    {
+        "utc": 5,
+        "name": "UTC+5",
+        "locations": [
+            "Pakistan",
+            "Turkmenistan"
+        ]
+    },
+    {
+        "utc": 5.5,
+        "name": "UTC+5:30",
+        "locations": [
+            "Sri Lanka",
+            "New Delhi"
+        ]
+    },
+    {
+        "utc": 5.75,
+        "name": "UTC+5:45",
+        "locations": [
+            "Nepal"
+        ]
+    },
+    {
+        "utc": 6,
+        "name": "UTC+6",
+        "locations": [
+            "Bangladesh",
+            "Kyrgyzstan"
+        ]
+    },
+    {
+        "utc": 6.5,
+        "name": "UTC_6:30",
+        "locations": [
+            "Myanmar"
+        ]
+    },
+    {
+        "utc": 7,
+        "name": "UTC+7",
+        "locations": [
+            "Thailand",
+            "Christmas Island",
+            "Laos"
+        ]
+    },
+    {
+        "utc": 8,
+        "name": "UTC+8",
+        "locations": [
+            "Beijing", 
+            "Shanghai", 
+            "Hong Kong", 
+            "Taiwan", 
+            "Singapore"
+        ]
+    },
+    {
+        "utc": 8.75,
+        "name": "UTC+8:45",
+        "locations": [
+            "Border Village, South Australia",
+            "Cocklebiddy, Western Australia"
+        ]
+    },
+    {
+        "utc": 9,
+        "name": "UTC+9",
+        "locations": [
+            "Tokyo",
+            "Seuol"
+        ]
+    },
+    {
+        "utc": 9.5,
+        "name": "UTC+9:30",
+        "locations": [
+            "Darwin, Australia", 
+            "Northern Territory, Australia"
+        ]
+    },
+    {
+        "utc": 10,
+        "name": "UTC+10",
+        "locations": [
+            "Guam",
+            "Papa New Guinea"
+        ]
+    },
+    {
+        "utc": 10.5,
+        "name": "UTC+10:30",
+        "locations": [
+            "Adelaide, Australia",
+            "South Australia"
+        ]
+    },
+    {
+        "utc": 11,
+        "name": "UTC+11",
+        "locations": [
+            "Sydney",
+            "New Caledonia"
+        ]
+    },
+    {
+        "utc": 12,
+        "name": "UTC+12",
+        "locations": [
+            "Fiji",
+            "Norfolk Island",
+            "Marshall Islands"
+        ]
+    },
+    {
+        "utc": 13,
+        "name": "UTC+13",
+        "locations": [
+            "New Zealand",
+            "Samoa",
+            "Tonga"
+        ]
+    },
+    {
+        "utc": 13.75,
+        "name": "UTC+13:45",
+        "locations": [
+            "Chatham Islands"
+        ]
+    },
+    {
+        "utc": 14,
+        "name": "UTC+14",
+        "locations": [
+            "Tabwakea, Kiribati",
+            "Line Islands"
+        ]
+    }
+]
