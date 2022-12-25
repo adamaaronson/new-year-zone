@@ -1,8 +1,7 @@
 import '../css/App.scss'
 import { CountdownList } from './CountdownList'
 import { Header } from './Header'
-import { MainDescription } from './MainDescription'
-import { MainClock } from './MainClock'
+import { MainCountdown } from './MainCountdown'
 
 export default function App() {
     return (
@@ -10,10 +9,7 @@ export default function App() {
             <div className="app-border"></div>
             <Header />
             <section className="main-countdown-section">
-                <MainDescription timeZone="UTC-5" />
-            </section>
-            <section className="main-clock-section">
-                <MainClock timeZone="UTC-5" />
+                <MainCountdown timeZone="UTC-6" />
             </section>
             <section className="countdown-list-section">
                 <CountdownList />
