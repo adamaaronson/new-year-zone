@@ -19,7 +19,7 @@ export function CountdownList({ timeZones, globalTime }: Props) {
                     <Countdown globalTime={globalTime} untilTime={getNewYearInTimeZone(zone)} />
                 </div>
                 <div className="countdown-list-timestamp">
-                    at {getTimestampDescription(getNewYearInTimeZone(zone))}
+                    celebrate at {getTimestampDescription(getNewYearInTimeZone(zone))}
                 </div>
             </div>
             <div className="countdown-list-info">

@@ -20,9 +20,9 @@ export function CountdownMain({ timeZone, globalTime }: Props) {
 
     return <div className="main-countdown">
         <div className="up-next main-up-next">
-            Up next
+            Up next:
             <div className="main-timestamp">
-                at {getTimestampDescription(newYearInTimeZone)}:
+                Celebrate at {getTimestampDescription(newYearInTimeZone)}
             </div>
         </div>
         
