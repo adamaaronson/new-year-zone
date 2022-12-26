@@ -1,9 +1,13 @@
 import '../css/Header.scss';
 
-export function Header() {
+interface Props {
+    newYear: number
+}
+
+export function Header({ newYear }: Props) {
     return <header className="header">
         <div className="yearname">
-            2023
+            {newYear}
         </div>
         <div className="header-logo">
             <div className="header-part header-new">

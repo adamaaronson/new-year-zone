@@ -5,23 +5,54 @@ import { Header } from './Header'
 import { CountdownMain } from './CountdownMain'
 import { useState } from 'react'
 import { getNewYearInTimeZone } from './Countdown'
+import { TimeZone } from './TimeZone'
 
-// function getSoonestTimeZone() {
-//     const now = Date.now()
-//     getNewYearInTimeZone
-// }
+const newYear = new Date().getFullYear() + 1;
+const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
+
+interface TimeZoneData {
+    soonestTimeZone: TimeZone | null;
+    remainingTimeZones: TimeZone[] | null;
+}
+
+function getTimeZoneData(): TimeZoneData {
+    const now = Date.now();
+    const soonestTimeZoneIndex = timeZonesInOrder.findIndex(zone => getNewYearInTimeZone(zone) > now);
+
+    if (soonestTimeZoneIndex === -1) {
+        return {
+            soonestTimeZone: null,
+            remainingTimeZones: null
+        }
+    }
+
+    return {
+        soonestTimeZone: timeZonesInOrder[soonestTimeZoneIndex],
+        remainingTimeZones: timeZonesInOrder.slice(soonestTimeZoneIndex + 1)
+    };
+}
 
 export default function App() {
-    const [mainTimeZone, setMainTimeZone] = useState(getSoonestTimeZone())
+    const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
+
     return (
         <div className="app">
             <div className="app-border"></div>
-            <Header />
+            <Header newYear={newYear}/>
             <section className="main-countdown-section">
-                <CountdownMain timeZone={timezones[0]} />
+                {timeZoneData.soonestTimeZone ? 
+                    <CountdownMain timeZone={timeZoneData.soonestTimeZone} />
+                :
+                    <></>
+                }
+                
             </section>
             <section className="countdown-list-section">
-                <CountdownList />
+                {timeZoneData.remainingTimeZones ?
+                    <CountdownList timeZones={timeZoneData.remainingTimeZones} />
+                :
+                    <></>
+                }
             </section>
         </div>
     )

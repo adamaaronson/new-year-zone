@@ -1,22 +1,25 @@
 import '../css/CountdownList.scss';
 import { TimeZone } from "./TimeZone"
-import timezones from "../data/timezones.json"
-import { Countdown, getNewYearInTimeZone } from "./Countdown";
+import { Countdown, getNewYearInTimeZone, getTimestampDescription } from "./Countdown";
 
 interface Props {
     timeZones: TimeZone[]
 }
 
-export function CountdownList() {
+export function CountdownList({ timeZones }: Props) {
     return <div className="countdown-list">
         <div className="up-next">
-            Next up:
+            Coming up:
         </div>
-        {timezones
-            .sort((a, b) => b.utc - a.utc)
+        {timeZones
             .map(zone => <div className="countdown-list-row" key={zone.name}>
-            <div className="countdown-list-timer">
-                <Countdown untilTime={getNewYearInTimeZone(zone)} />
+            <div className="countdown-list-time-stuff">
+                <div className="countdown-list-timer">
+                    <Countdown untilTime={getNewYearInTimeZone(zone)} />
+                </div>
+                <div className="countdown-list-timestamp">
+                    at {getTimestampDescription(getNewYearInTimeZone(zone))}
+                </div>
             </div>
             <div className="countdown-list-info">
                 <div className="countdown-list-locations">

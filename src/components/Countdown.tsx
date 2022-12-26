@@ -16,6 +16,8 @@ const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE;
 const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
+const MIDNIGHT = "12:00 AM"
+
 interface Props {
     untilTime: number
 }
@@ -38,7 +40,7 @@ function getHours(timeInMilliseconds: number) {
 }
 
 function getDays(timeInMilliseconds: number) {
-    return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY).toString();
+    return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY);
 }
 
 export function getNewYearInTimeZone(timeZone: TimeZone) {
@@ -53,6 +55,18 @@ export function getNewYearInTimeZone(timeZone: TimeZone) {
     timeZoneNewYearDate.setMinutes(timeZoneNewYearDate.getMinutes() + differenceMinutes);
     
     return timeZoneNewYearDate.getTime();
+}
+
+export function getTimestampDescription(timestamp: number) {
+    const newYearLocalTime = new Date(timestamp).toLocaleTimeString([], { hour: "numeric", minute: "numeric" })
+    const newYearLocalDate = new Date(timestamp).toLocaleDateString([], { month: "short", day: "numeric"})
+    const newYearIsSoon = timestamp < Date.now() + MILLISECONDS_PER_HOUR * 23;
+
+    return (
+        newYearLocalTime == MIDNIGHT ? "Midnight" : newYearLocalTime
+    ) + (
+        newYearIsSoon ? "" : " on " + newYearLocalDate
+    )
 }
 
 export function Countdown({ untilTime }: Props) {
@@ -77,6 +91,6 @@ export function Countdown({ untilTime }: Props) {
     }, [time])
 
     return <div className="countdown">
-       {getDays(time)}:{getHours(time)}:{getMinutes(time)}:{getSeconds(time)}
+       {getDays(time) > 0 ? (getDays(time) + ":") : ""}{getHours(time)}:{getMinutes(time)}:{getSeconds(time)}
     </div>
 }

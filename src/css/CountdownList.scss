@@ -31,21 +31,12 @@
 
     display: flex;
     flex-flow: column wrap;
-
-    // @media (max-width: 800px) {
-    //     flex-flow: column wrap;
-    // }
-    
-    // @media (min-width: 800px) {
-    //     .countdown-list-location:not(:last-child):after {
-    //         content: "\00a0/\00a0"
-    //     }
-    // }
 }
 
 .countdown-list-timer {
-    font-size: 6rem;
+    font-size: 4rem;
     line-height: 1em;
+    margin-bottom: 1rem;
     flex: auto;
 
     @media (max-width: 1200px) {
@@ -53,6 +44,6 @@
     }
 }
 
-.countdown-list-timezone-name {
+.countdown-list-timezone-name, .countdown-list-timestamp {
     font-size: 1.5rem;
 }

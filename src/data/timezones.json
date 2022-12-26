@@ -52,7 +52,7 @@
         "utc": -7,
         "name": "UTC-7",
         "locations": [
-            "Aberta",
+            "Alberta",
             "Denver",
             "Phoenix"
         ]
@@ -316,8 +316,7 @@
         "utc": 14,
         "name": "UTC+14",
         "locations": [
-            "Tabwakea, Kiribati",
-            "Line Islands"
+            "Line Islands, Kiribati"
         ]
     }
 ]
