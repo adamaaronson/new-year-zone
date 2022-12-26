@@ -4,8 +4,7 @@ import { TimeZone } from "./TimeZone";
 // source for a lot of this:
 // https://medium.com/@bsalwiczek/building-timer-in-react-its-not-as-simple-as-you-may-think-80e5f2648f9b
 
-const MILLISECONDS_UNTIL_COUNTDOWN = 60*10*1000;
-const INTERVAL_MILLISECONDS = 100;
+export const INTERVAL_MILLISECONDS = 100;
 
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MINUTE = 60;
@@ -20,6 +19,7 @@ const MIDNIGHT = "12:00 AM"
 
 interface Props {
     untilTime: number
+    globalTime: number
 }
 
 function getMillisecondsUntil(timeInMilliseconds: number) {
@@ -69,26 +69,8 @@ export function getTimestampDescription(timestamp: number) {
     )
 }
 
-export function Countdown({ untilTime }: Props) {
-    const [time, setTime] = useState(getMillisecondsUntil(untilTime));
-    const [referenceTime, setReferenceTime] = useState(Date.now());
-    
-    useEffect(() => {
-        const countdown = () => {
-            setTime(prevTime => {
-                if (prevTime <= 0) {
-                    return 0;
-                }
-
-                const now = Date.now();
-                const interval = now - referenceTime;
-                setReferenceTime(now);
-                return prevTime - interval;
-            })
-        }
-
-        setTimeout(countdown, INTERVAL_MILLISECONDS);
-    }, [time])
+export function Countdown({ untilTime, globalTime }: Props) {
+    const time = untilTime - globalTime;
 
     return <div className="countdown">
        {getDays(time) > 0 ? (getDays(time) + ":") : ""}{getHours(time)}:{getMinutes(time)}:{getSeconds(time)}

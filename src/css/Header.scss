@@ -3,22 +3,27 @@
 .header {
     width: 100%;
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 
-    gap: 3rem;
+    gap: 0.5rem;
     position: relative;
 }
 
 .yearname {
     position: absolute;
-    font-size: 25rem;
+    font-size: 32rem;
     opacity: 0.2;
     transform: rotate(-5deg) translateY(-0.5rem);
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1400px) {
+        font-size: 25rem;
+    }
+
+    @media (max-width: 900px) {
         font-size: 20rem;
     }
 
@@ -55,9 +60,18 @@
 
     padding: 10px;
 
-    transform: rotate(10deg);
+    transform: rotate(8deg);
 }
 
 .header-description {
     font-size: 3rem;
+}
+
+.subtitle {
+    transform: rotate(8deg);
+    font-size: 1.5rem;
+}
+
+.subtitle-row-2 {
+    margin-left: 6rem;
 }

@@ -214,7 +214,7 @@
     },
     {
         "utc": 6.5,
-        "name": "UTC_6:30",
+        "name": "UTC+6:30",
         "locations": [
             "Myanmar"
         ]

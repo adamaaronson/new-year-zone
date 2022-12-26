@@ -6,9 +6,10 @@ import { TimeZone } from './TimeZone';
 
 interface Props {
     timeZone: TimeZone
+    globalTime: number
 }
 
-export function CountdownMain({ timeZone }: Props) {
+export function CountdownMain({ timeZone, globalTime }: Props) {
     const { fontSize, ref } = useFitText({
         minFontSize: 5,
         maxFontSize: 10000,
@@ -19,11 +20,15 @@ export function CountdownMain({ timeZone }: Props) {
 
     return <div className="main-countdown">
         <div className="up-next main-up-next">
-            Up next, at {getTimestampDescription(newYearInTimeZone)}:
+            Up next
+            <div className="main-timestamp">
+                at {getTimestampDescription(newYearInTimeZone)}:
+            </div>
         </div>
+        
         <div className="main-clock">
             <div className="main-clock-textfit" ref={ref} style={{ fontSize }}>
-                <Countdown untilTime={newYearInTimeZone}/>  
+                <Countdown untilTime={newYearInTimeZone} globalTime={globalTime}/>  
             </div>
             <div className="main-time-zone-locations">
                 { timeZone.locations.join(" / ")}

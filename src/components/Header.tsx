@@ -20,5 +20,13 @@ export function Header({ newYear }: Props) {
                 Zone
             </div>
         </div>
+        <div className="subtitle">
+            <div className="subtitle-row subtitle-row-1">
+                Countdown to {newYear}
+            </div>
+            <div className="subtitle-row subtitle-row-2">
+                in every time zone
+            </div>
+        </div>
     </header>
 }

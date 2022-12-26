@@ -3,8 +3,8 @@ import { CountdownList } from './CountdownList'
 import timezones from "../data/timezones.json"
 import { Header } from './Header'
 import { CountdownMain } from './CountdownMain'
-import { useState } from 'react'
-import { getNewYearInTimeZone } from './Countdown'
+import { useEffect, useState } from 'react'
+import { getNewYearInTimeZone, INTERVAL_MILLISECONDS } from './Countdown'
 import { TimeZone } from './TimeZone'
 
 const newYear = new Date().getFullYear() + 1;
@@ -34,6 +34,25 @@ function getTimeZoneData(): TimeZoneData {
 
 export default function App() {
     const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
+    const [globalTime, setGlobalTime] = useState(Date.now());
+    const [referenceTime, setReferenceTime] = useState(Date.now());
+
+    useEffect(() => {
+        const updateCountdowns = () => {
+            setGlobalTime(prevTime => {
+                if (prevTime <= 0) {
+                    return 0;
+                }
+
+                const now = Date.now();
+                const interval = now - referenceTime;
+                setReferenceTime(now);
+                return prevTime + interval;
+            })
+        }
+
+        setTimeout(updateCountdowns, INTERVAL_MILLISECONDS);
+    }, [globalTime])
 
     return (
         <div className="app">
@@ -41,7 +60,7 @@ export default function App() {
             <Header newYear={newYear}/>
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
-                    <CountdownMain timeZone={timeZoneData.soonestTimeZone} />
+                    <CountdownMain globalTime={globalTime} timeZone={timeZoneData.soonestTimeZone} />
                 :
                     <></>
                 }
@@ -49,7 +68,7 @@ export default function App() {
             </section>
             <section className="countdown-list-section">
                 {timeZoneData.remainingTimeZones ?
-                    <CountdownList timeZones={timeZoneData.remainingTimeZones} />
+                    <CountdownList globalTime={globalTime} timeZones={timeZoneData.remainingTimeZones} />
                 :
                     <></>
                 }
