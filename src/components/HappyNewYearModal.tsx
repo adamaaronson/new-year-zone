@@ -4,14 +4,18 @@ import { TimeZone } from './TimeZone';
 
 interface Props {
     timeZone: TimeZone
+    celebrating: boolean
+    setCelebrating: (celebrating: boolean) => void
 }
 
-export function HappyNewYearModal({ timeZone }: Props) {
-    const [visible, setVisible] = useState(true);
+export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Props) {
+    const closeModal = () => {
+        setCelebrating(false)
+    }
 
-    return <div className={"happy-new-year-modal-wrapper" + (visible ? "" : " invisible")} onClick={() => setVisible(false)}>
-        <div className={"happy-new-year-modal" + (visible ? "" : " invisible")} onClick={e => e.stopPropagation()}>
-            <div className="x-button" onClick={() => setVisible(false)}>
+    return <div className={"happy-new-year-modal-wrapper" + (celebrating ? "" : " invisible")} onClick={closeModal}>
+        <div className={"happy-new-year-modal" + (celebrating ? "" : " invisible")} onClick={e => e.stopPropagation()}>
+            <div className="x-button" onClick={closeModal}>
                 X
             </div>
             <h1 className="happy-new-year-title">

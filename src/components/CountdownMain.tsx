@@ -7,13 +7,14 @@ interface Props {
     timeZone: TimeZone
     globalTime: number
     newYear: number
+    onCountdownEnd: (timeZone: TimeZone) => void
 }
 
 function getNewTextSize(textWidth: number, containerWidth: number, textSize: number) {
     return Math.floor(containerWidth / textWidth * textSize);
 }
 
-export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
+export function CountdownMain({ timeZone, globalTime, newYear, onCountdownEnd }: Props) {
     const newYearInTimeZone = getNewYearInTimeZone(newYear, timeZone)
     const countdownTextRef = useRef(null);
     const countdownContainerRef = useRef(null);
@@ -58,9 +59,13 @@ export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
             </div>
         </div>
         
-        <div className="main-clock">
+        <div className="main-countdown-meat">
             <div className="main-countdown-text" ref={countdownTextRef} style={{fontSize: countdownSize + "px"}}>
-                <Countdown untilTime={newYearInTimeZone} globalTime={globalTime}/>  
+                <Countdown
+                    untilTime={newYearInTimeZone}
+                    globalTime={globalTime}
+                    onCountdownEnd={() => onCountdownEnd(timeZone)}
+                />  
             </div>
             <div className="main-time-zone-locations">
                 { timeZone.locations.join(" / ")}

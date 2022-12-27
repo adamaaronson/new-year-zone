@@ -38,6 +38,8 @@ export default function App() {
     const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
     const [globalTime, setGlobalTime] = useState(Date.now());
     const [referenceTime, setReferenceTime] = useState(Date.now());
+    const [celebrating, setCelebrating] = useState(false);
+    const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
 
     useEffect(() => {
         const updateCountdowns = () => {
@@ -56,17 +58,33 @@ export default function App() {
         setTimeout(updateCountdowns, INTERVAL_MILLISECONDS);
     }, [globalTime])
 
+    const celebrate = (timeZone: TimeZone) => {
+        setTimeZoneCelebrating(timeZone);
+        setCelebrating(true);
+    }
+
+    useEffect(() => {
+        if (!celebrating) {
+            setTimeZoneData(getTimeZoneData());
+        }
+    }, [celebrating])
+
     return (
         <div className="app">
             <div className="app-border"></div>
             <Header newYear={newYear}/>
-            {/* <HappyNewYearModal timeZone={timeZoneData.soonestTimeZone!} /> */}
+            <HappyNewYearModal
+                celebrating={celebrating}
+                setCelebrating={setCelebrating}
+                timeZone={timeZoneCelebrating}
+            />
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
                     <CountdownMain
                         globalTime={globalTime}
                         timeZone={timeZoneData.soonestTimeZone}
                         newYear={newYear}
+                        onCountdownEnd={timeZone => celebrate(timeZone)}
                     />
                 :
                     <></>
@@ -79,6 +97,7 @@ export default function App() {
                         globalTime={globalTime}
                         timeZones={timeZoneData.remainingTimeZones}
                         newYear={newYear}
+                        onCountdownEnd={timeZone => celebrate(timeZone)}
                     />
                 :
                     <></>

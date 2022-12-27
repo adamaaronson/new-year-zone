@@ -252,14 +252,13 @@
         "name": "UTC+9",
         "locations": [
             "Tokyo",
-            "Seuol"
+            "Seoul"
         ]
     },
     {
         "utc": 9.5,
         "name": "UTC+9:30",
         "locations": [
-            "Darwin, Australia", 
             "Northern Territory, Australia"
         ]
     },
@@ -268,7 +267,7 @@
         "name": "UTC+10",
         "locations": [
             "Guam",
-            "Papa New Guinea"
+            "Papua New Guinea"
         ]
     },
     {

@@ -14,10 +14,15 @@
     gap: 1rem;
 }
 
+.countdown-list-time-stuff {
+    flex: auto;
+}
+
 .countdown-list-info {
     text-align: right;
     flex: auto;
 }
+
 
 .countdown-list-locations {
     font-size: 3rem;
@@ -27,13 +32,16 @@
 
     display: flex;
     flex-flow: column wrap;
+
+    @media (max-width: 400px) {
+        font-size: 2rem;
+    }
 }
 
 .countdown-list-timer {
     font-size: 4rem;
     line-height: 1em;
     margin-bottom: 0.5rem;
-    flex: auto;
 
     @media (max-width: 1200px) {
         font-size: 4rem;

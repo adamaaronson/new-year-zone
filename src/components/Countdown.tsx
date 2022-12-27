@@ -17,25 +17,20 @@ const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
 const HAPPY_NEW_YEAR = "Happy New Year!"
 
-const NEW_YEAR_DATE = {
-    yearOffset: 0,
-    month: 0,
-    day: 1,
-    hour: 0,
-    minute: 0
-}
-
 // const NEW_YEAR_DATE = {
-//     yearOffset: -1,
-//     month: 11,
-//     day: 28,
-//     hour: 20,
-//     minute: 7
+//     yearOffset: 0,
+//     month: 0,
+//     day: 1,
+//     hour: 0,
+//     minute: 0
 // }
 
-interface Props {
-    untilTime: number
-    globalTime: number
+const NEW_YEAR_DATE = {
+    yearOffset: -1,
+    month: 11,
+    day: 28,
+    hour: 5,
+    minute: 13
 }
 
 function getSeconds(timeInMilliseconds: number) {
@@ -114,8 +109,24 @@ function getTimeString(time: number) {
     return timeString;
 }
 
-export function Countdown({ untilTime, globalTime }: Props) {
+interface Props {
+    untilTime: number
+    globalTime: number
+    onCountdownEnd: () => void
+}
+
+export function Countdown({ untilTime, globalTime, onCountdownEnd }: Props) {
+    const [complete, setComplete] = useState(false)
     const time = untilTime - globalTime;
+
+    useEffect(() => {
+        if (time <= 0) {
+            if (!complete) {
+                onCountdownEnd();
+                setComplete(true);
+            }
+        }
+    }, [time])
 
     return <div className="countdown">
         {getTimeString(time)}

@@ -21,9 +21,15 @@
     font-size: 4rem;
     line-height: 0.9em;
     margin-bottom: 1rem;
+    hyphens: auto;
+    word-wrap: break-word;
 
     @media (max-width: 800px) {
         font-size: 3rem;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 2rem;
     }
 }
 
