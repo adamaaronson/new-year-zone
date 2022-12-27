@@ -1,7 +1,7 @@
 import '../css/CountdownMain.scss';
-import useFitText from "use-fit-text";
-import { Countdown, getNewYearInTimeZone, getTimestampDescription } from './Countdown';
+import { Countdown, getDays, getNewYearInTimeZone, getTimestampDescription } from './Countdown';
 import { TimeZone } from './TimeZone';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
     timeZone: TimeZone
@@ -9,20 +9,49 @@ interface Props {
     newYear: number
 }
 
-export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
-    const { fontSize, ref } = useFitText({
-        minFontSize: 1,
-        maxFontSize: 100000,
-        resolution: 1,
-        onFinish: (fontSize) => {
-            console.log(fontSize);
-        }
-    });
+function getNewTextSize(textWidth: number, containerWidth: number, textSize: number) {
+    return Math.floor(containerWidth / textWidth * textSize);
+}
 
+export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
     const newYearInTimeZone = getNewYearInTimeZone(newYear, timeZone)
+    const countdownTextRef = useRef(null);
+    const countdownContainerRef = useRef(null);
+    const [countdownSize, setCountdownSize] = useState(100);
+
+    const resizeCountdown = () => {
+        if (countdownTextRef.current && countdownContainerRef.current) {
+            const currentFontSize = window
+                .getComputedStyle(countdownTextRef.current, null)
+                .getPropertyValue("font-size");
+            
+            const newCountdownSize = getNewTextSize(
+                countdownTextRef.current["offsetWidth"],
+                countdownContainerRef.current["offsetWidth"],
+                parseInt(currentFontSize)
+            );
+
+            setCountdownSize(newCountdownSize);
+        }
+    }
+
+    // resize countdown on load
+    useEffect(() => {
+        resizeCountdown();
+    }, [])
+
+    // resize countdown on days change
+    useEffect(() => {
+        resizeCountdown();
+    }, [getDays(newYearInTimeZone - globalTime)])
+
+    // resize countdown on window resize
+    useEffect(() => {
+        window.addEventListener('resize', resizeCountdown);
+    }, [])
 
     return <div className="main-countdown">
-        <div className="up-next main-up-next">
+        <div className="up-next main-up-next" ref={countdownContainerRef}>
             Up next:
             <div className="main-timestamp">
                 Celebrate at {getTimestampDescription(newYearInTimeZone)}
@@ -30,7 +59,7 @@ export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
         </div>
         
         <div className="main-clock">
-            <div className="main-clock-textfit" ref={ref} style={{ fontSize }}>
+            <div className="main-countdown-text" ref={countdownTextRef} style={{fontSize: countdownSize + "px"}}>
                 <Countdown untilTime={newYearInTimeZone} globalTime={globalTime}/>  
             </div>
             <div className="main-time-zone-locations">

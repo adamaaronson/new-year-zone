@@ -60,7 +60,7 @@ export default function App() {
         <div className="app">
             <div className="app-border"></div>
             <Header newYear={newYear}/>
-            <HappyNewYearModal timeZone={timeZoneData.soonestTimeZone!} />
+            {/* <HappyNewYearModal timeZone={timeZoneData.soonestTimeZone!} /> */}
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
                     <CountdownMain

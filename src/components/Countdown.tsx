@@ -19,11 +19,19 @@ const HAPPY_NEW_YEAR = "Happy New Year!"
 
 const NEW_YEAR_DATE = {
     yearOffset: 0,
-    month: 11,
-    day: 26,
-    hour: 24,
-    minute: 3
+    month: 0,
+    day: 1,
+    hour: 0,
+    minute: 0
 }
+
+// const NEW_YEAR_DATE = {
+//     yearOffset: -1,
+//     month: 11,
+//     day: 28,
+//     hour: 20,
+//     minute: 7
+// }
 
 interface Props {
     untilTime: number
@@ -49,7 +57,7 @@ function getHours(timeInMilliseconds: number) {
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_HOUR % HOURS_PER_DAY).toString().padStart(2, '0');
 }
 
-function getDays(timeInMilliseconds: number) {
+export function getDays(timeInMilliseconds: number) {
     if (timeInMilliseconds < 0) {
         timeInMilliseconds = 0;
     }
