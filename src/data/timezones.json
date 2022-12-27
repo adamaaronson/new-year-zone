@@ -93,7 +93,7 @@
         ]
     },
     {
-        "utc": 3,
+        "utc": -3,
         "name": "UTC-3",
         "locations": [
             "Argentina",
@@ -133,7 +133,7 @@
             "Belgium", 
             "Congo", 
             "Paris", 
-            "Equitorial Guinea", 
+            "Equatorial Guinea", 
             "Nigeria", 
             "Poland", 
             "Spain"

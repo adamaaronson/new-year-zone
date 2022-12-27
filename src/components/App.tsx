@@ -6,8 +6,10 @@ import { CountdownMain } from './CountdownMain'
 import { useEffect, useState } from 'react'
 import { getNewYearInTimeZone, INTERVAL_MILLISECONDS } from './Countdown'
 import { TimeZone } from './TimeZone'
+import { HappyNewYearModal } from './HappyNewYearModal'
+import { Footer } from './Footer'
 
-const newYear = new Date().getFullYear() + 1;
+const newYear = 2023;
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
 
 interface TimeZoneData {
@@ -17,7 +19,7 @@ interface TimeZoneData {
 
 function getTimeZoneData(): TimeZoneData {
     const now = Date.now();
-    const soonestTimeZoneIndex = timeZonesInOrder.findIndex(zone => getNewYearInTimeZone(zone) > now);
+    const soonestTimeZoneIndex = timeZonesInOrder.findIndex(zone => getNewYearInTimeZone(newYear, zone) > now);
 
     if (soonestTimeZoneIndex === -1) {
         return {
@@ -58,9 +60,14 @@ export default function App() {
         <div className="app">
             <div className="app-border"></div>
             <Header newYear={newYear}/>
+            <HappyNewYearModal timeZone={timeZoneData.soonestTimeZone!} />
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
-                    <CountdownMain globalTime={globalTime} timeZone={timeZoneData.soonestTimeZone} />
+                    <CountdownMain
+                        globalTime={globalTime}
+                        timeZone={timeZoneData.soonestTimeZone}
+                        newYear={newYear}
+                    />
                 :
                     <></>
                 }
@@ -68,11 +75,16 @@ export default function App() {
             </section>
             <section className="countdown-list-section">
                 {timeZoneData.remainingTimeZones ?
-                    <CountdownList globalTime={globalTime} timeZones={timeZoneData.remainingTimeZones} />
+                    <CountdownList
+                        globalTime={globalTime}
+                        timeZones={timeZoneData.remainingTimeZones}
+                        newYear={newYear}
+                    />
                 :
                     <></>
                 }
             </section>
+            <Footer />
         </div>
     )
 }

@@ -11,6 +11,10 @@
 
     gap: 0.5rem;
     position: relative;
+
+    @media (min-width: 1200px) {
+        margin-bottom: -1rem;
+    }
 }
 
 .yearname {
@@ -74,4 +78,8 @@
 
 .subtitle-row-2 {
     margin-left: 6rem;
+
+    @media (max-width: 350px) {
+        margin-left: 2rem;
+    }
 }

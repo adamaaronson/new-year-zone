@@ -1,22 +1,25 @@
 import '../css/CountdownMain.scss';
 import useFitText from "use-fit-text";
 import { Countdown, getNewYearInTimeZone, getTimestampDescription } from './Countdown';
-import { useState } from 'react';
 import { TimeZone } from './TimeZone';
 
 interface Props {
     timeZone: TimeZone
     globalTime: number
+    newYear: number
 }
 
-export function CountdownMain({ timeZone, globalTime }: Props) {
+export function CountdownMain({ timeZone, globalTime, newYear }: Props) {
     const { fontSize, ref } = useFitText({
-        minFontSize: 5,
-        maxFontSize: 10000,
-        resolution: 1
+        minFontSize: 1,
+        maxFontSize: 100000,
+        resolution: 1,
+        onFinish: (fontSize) => {
+            console.log(fontSize);
+        }
     });
 
-    const newYearInTimeZone = getNewYearInTimeZone(timeZone)
+    const newYearInTimeZone = getNewYearInTimeZone(newYear, timeZone)
 
     return <div className="main-countdown">
         <div className="up-next main-up-next">

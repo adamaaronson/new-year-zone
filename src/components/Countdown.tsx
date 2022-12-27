@@ -15,37 +15,55 @@ const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE;
 const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
-const MIDNIGHT = "12:00 AM"
+const HAPPY_NEW_YEAR = "Happy New Year!"
+
+const NEW_YEAR_DATE = {
+    yearOffset: 0,
+    month: 11,
+    day: 26,
+    hour: 24,
+    minute: 3
+}
 
 interface Props {
     untilTime: number
     globalTime: number
 }
 
-function getMillisecondsUntil(timeInMilliseconds: number) {
-    const now = Date.now();
-    return timeInMilliseconds - now;
-}
-
 function getSeconds(timeInMilliseconds: number) {
+    // add 1 because it makes countdown more satisfying
     return Math.floor((timeInMilliseconds / MILLISECONDS_PER_SECOND + 1) % SECONDS_PER_MINUTE).toString().padStart(2, '0');
 }
 
 function getMinutes(timeInMilliseconds: number) {
+    if (timeInMilliseconds < 0) {
+        timeInMilliseconds = 0;
+    }
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_MINUTE % MINUTES_PER_HOUR).toString().padStart(2, '0');
 }
 
 function getHours(timeInMilliseconds: number) {
+    if (timeInMilliseconds < 0) {
+        timeInMilliseconds = 0;
+    }
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_HOUR % HOURS_PER_DAY).toString().padStart(2, '0');
 }
 
 function getDays(timeInMilliseconds: number) {
+    if (timeInMilliseconds < 0) {
+        timeInMilliseconds = 0;
+    }
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY);
 }
 
-export function getNewYearInTimeZone(timeZone: TimeZone) {
-    const currentYear = new Date().getFullYear();
-    const localNewYearDate = new Date(currentYear + 1, 0, 1, 0, 0);
+export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
+    const localNewYearDate = new Date(
+        newYear + NEW_YEAR_DATE.yearOffset,
+        NEW_YEAR_DATE.month,
+        NEW_YEAR_DATE.day,
+        NEW_YEAR_DATE.hour, 
+        NEW_YEAR_DATE.minute
+    );
 
     const localTimeZoneOffsetMinutes = new Date().getTimezoneOffset();
     const timeZoneOffsetMinutes = timeZone.utc * MINUTES_PER_HOUR;
@@ -63,16 +81,35 @@ export function getTimestampDescription(timestamp: number) {
     const newYearIsSoon = timestamp < Date.now() + MILLISECONDS_PER_HOUR * 23;
 
     return (
-        newYearLocalTime == MIDNIGHT ? "Midnight" : newYearLocalTime
+        newYearLocalTime
     ) + (
         newYearIsSoon ? "" : " on " + newYearLocalDate
     )
+}
+
+function getTimeString(time: number) {
+    let timeString = "";
+
+    if (time < 0) {
+        time = -1;
+    }
+
+    if (getDays(time) > 0) {
+        timeString += getDays(time) + ":";
+    }
+    timeString += getHours(time);
+    timeString += ":";
+    timeString += getMinutes(time);
+    timeString += ":";
+    timeString += getSeconds(time);
+
+    return timeString;
 }
 
 export function Countdown({ untilTime, globalTime }: Props) {
     const time = untilTime - globalTime;
 
     return <div className="countdown">
-       {getDays(time) > 0 ? (getDays(time) + ":") : ""}{getHours(time)}:{getMinutes(time)}:{getSeconds(time)}
+        {getTimeString(time)}
     </div>
 }

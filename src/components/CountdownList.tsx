@@ -5,9 +5,10 @@ import { Countdown, getNewYearInTimeZone, getTimestampDescription } from "./Coun
 interface Props {
     timeZones: TimeZone[]
     globalTime: number
+    newYear: number
 }
 
-export function CountdownList({ timeZones, globalTime }: Props) {
+export function CountdownList({ timeZones, globalTime, newYear }: Props) {
     return <div className="countdown-list">
         <div className="up-next">
             Coming up:
@@ -16,10 +17,10 @@ export function CountdownList({ timeZones, globalTime }: Props) {
             .map(zone => <div className="countdown-list-row" key={zone.name}>
             <div className="countdown-list-time-stuff">
                 <div className="countdown-list-timer">
-                    <Countdown globalTime={globalTime} untilTime={getNewYearInTimeZone(zone)} />
+                    <Countdown globalTime={globalTime} untilTime={getNewYearInTimeZone(newYear, zone)} />
                 </div>
                 <div className="countdown-list-timestamp">
-                    celebrate at {getTimestampDescription(getNewYearInTimeZone(zone))}
+                    Celebrate at {getTimestampDescription(getNewYearInTimeZone(newYear, zone))}
                 </div>
             </div>
             <div className="countdown-list-info">

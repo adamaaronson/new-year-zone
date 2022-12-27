@@ -23,7 +23,7 @@
     margin-bottom: 1rem;
 
     @media (max-width: 800px) {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 
@@ -33,14 +33,15 @@
 
 .main-clock {
     width: 100%;
-    font-size: 500px;
+    font-size: 9rem;
+    text-align: right;
 }
 
 .main-clock-textfit {
     width: 100%;
     height: 1em;
+    visibility: auto;
     line-height: 0.8em;
-    // margin-bottom: 1rem;
 }
 
 .main-until {
@@ -49,7 +50,7 @@
 }
 
 .main-countdown {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .main-timestamp {
