@@ -5,14 +5,18 @@ import timezones from "../data/timezones.json"
 import { Header } from './Header'
 import { CountdownMain } from './CountdownMain'
 import { useEffect, useState } from 'react'
-import { getNewYearInTimeZone, INTERVAL_MILLISECONDS } from './Countdown'
+import { getNewYearInTimeZone } from './Countdown'
 import { TimeZone } from './TimeZone'
 import { HappyNewYearModal } from './HappyNewYearModal'
 import { Footer } from './Footer'
 import { NewYearEverywhere } from './NewYearEverywhere'
 
 const newYear = 2023;
+const INTERVAL_MILLISECONDS = 100;
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
+
+const defaultBackgroundColor = timeZonesInOrder[0].backgroundColor;
+const defaultTextColor = timeZonesInOrder[0].textColor;
 
 interface TimeZoneData {
     soonestTimeZone: TimeZone | null;
@@ -39,14 +43,31 @@ function getTimeZoneData(): TimeZoneData {
 export default function App() {
     const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
     const [globalTime, setGlobalTime] = useState(Date.now());
-    const [referenceTime, setReferenceTime] = useState(Date.now());
+    // const [referenceTime, setReferenceTime] = useState(Date.now());
     const [celebrating, setCelebrating] = useState(false);
     const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
+    const [backgroundColor, setBackgroundColor] = useState(defaultBackgroundColor)
+    const [textColor, setTextColor] = useState(defaultTextColor)
 
-    const root = document.documentElement
-    const backgroundColor = getComputedStyle(root).getPropertyValue("--background-color")
-    const textColor = getComputedStyle(root).getPropertyValue("--text-color")
-
+    useEffect(() => {
+        const newBackgroundColor =
+            timeZoneData.soonestTimeZone ?
+            timeZoneData.soonestTimeZone.backgroundColor :
+            defaultBackgroundColor;
+        
+        const newTextColor =
+            timeZoneData.soonestTimeZone ?
+            timeZoneData.soonestTimeZone.textColor :
+            defaultTextColor;
+        
+        setBackgroundColor(newBackgroundColor);
+        setTextColor(newTextColor);
+        
+        const root = document.documentElement;
+        root?.style.setProperty("--background-color", newBackgroundColor);
+        root?.style.setProperty("--text-color", newTextColor);
+    }, [timeZoneData])
+        
     useEffect(() => {
         const updateCountdowns = () => {
             setGlobalTime(prevTime => {
@@ -55,9 +76,9 @@ export default function App() {
                 }
 
                 const now = Date.now();
-                const interval = now - referenceTime;
-                setReferenceTime(now);
-                return prevTime + interval;
+                // const interval = now - referenceTime;
+                // setReferenceTime(now);
+                return now;
             })
         }
 
@@ -109,7 +130,7 @@ export default function App() {
                 
             </section>
             <section className="countdown-list-section">
-                {timeZoneData.remainingTimeZones ?
+                {timeZoneData.remainingTimeZones && timeZoneData.remainingTimeZones.length > 0 ?
                     <CountdownList
                         globalTime={globalTime}
                         timeZones={timeZoneData.remainingTimeZones}

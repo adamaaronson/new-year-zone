@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { TimeZone } from "./TimeZone";
 
-// source for a lot of this:
-// https://medium.com/@bsalwiczek/building-timer-in-react-its-not-as-simple-as-you-may-think-80e5f2648f9b
-
-export const INTERVAL_MILLISECONDS = 100;
-
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MINUTE = 60;
 const MINUTES_PER_HOUR = 60;
@@ -17,21 +12,21 @@ const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
 const HAPPY_NEW_YEAR = "Happy New Year!"
 
-// const NEW_YEAR_DATE = {
-//     yearOffset: 0,
-//     month: 0,
-//     day: 1,
-//     hour: 0,
-//     minute: 0
-// }
-
 const NEW_YEAR_DATE = {
-    yearOffset: -1,
-    month: 11,
-    day: 27,
-    hour: 18,
-    minute: 50
+    yearOffset: 0,
+    month: 0,
+    day: 1,
+    hour: 0,
+    minute: 0
 }
+
+// const NEW_YEAR_DATE = {
+//     yearOffset: -1,
+//     month: 11,
+//     day: 28,
+//     hour: 16,
+//     minute: 59
+// }
 
 function getSeconds(timeInMilliseconds: number) {
     // add 1 because it makes countdown more satisfying

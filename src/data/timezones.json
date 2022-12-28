@@ -5,7 +5,9 @@
         "locations": [
             "Baker Island",
             "Howland Island"
-        ]
+        ],
+        "backgroundColor": "#F9B3D1",
+        "textColor": "#2F1847"
     },
     {
         "utc": -11,
@@ -13,7 +15,9 @@
         "locations": [
             "American Samoa",
             "Niue"
-        ]
+        ],
+        "backgroundColor": "#E4B1AB",
+        "textColor": "#AC242B"
     },
     {
         "utc": -10,
@@ -21,21 +25,27 @@
         "locations": [
             "Hawaii",
             "Cook Islands"
-        ]
+        ],
+        "backgroundColor": "#C6EBBE",
+        "textColor": "#020887"
     },
     {
         "utc": -9.5,
         "name": "UTC-9:30",
         "locations": [
             "Atuona, French Polynesia" 
-        ]
+        ],
+        "backgroundColor": "#BEE7B8",
+        "textColor": "#4C2E05"
     },
     {
         "utc": -9,
         "name": "UTC-9",
         "locations": [
             "Alaska"
-        ]
+        ],
+        "backgroundColor": "#E6E6E6",
+        "textColor": "#297373"
     },
     {
         "utc": -8,
@@ -46,7 +56,9 @@
             "Los Angeles", 
             "San Francisco", 
             "Seattle" 
-        ]
+        ],
+        "backgroundColor": "#B287A3",
+        "textColor": "#482728"
     },
     {
         "utc": -7,
@@ -55,7 +67,9 @@
             "Alberta",
             "Denver",
             "Phoenix"
-        ]
+        ],
+        "backgroundColor": "#BEBBBB",
+        "textColor": "#2F243A"
     },
     {
         "utc": -6,
@@ -64,7 +78,9 @@
             "Mexico City",
             "Chicago",
             "Dallas"
-        ]
+        ],
+        "backgroundColor": "#DEEFB7",
+        "textColor": "#414288"
     },
     {
         "utc": -5,
@@ -75,7 +91,9 @@
             "Jamaica", 
             "Montreal",
             "Toronto"
-        ]
+        ],
+        "backgroundColor": "#CDEDF6",
+        "textColor": "#D84727"
     },
     {
         "utc": -4,
@@ -83,14 +101,18 @@
         "locations": [
             "Antigua and Barbuda",
             "Venezuela"
-        ]
+        ],
+        "backgroundColor": "#E0C57E",
+        "textColor": "#321179"
     },
     {
         "utc": -3.5,
         "name": "UTC-3:30",
         "locations": [
             "Newfoundland and Labrador"
-        ]
+        ],
+        "backgroundColor": "#92DCE5",
+        "textColor": "#2B303A"
     },
     {
         "utc": -3,
@@ -99,14 +121,18 @@
             "Argentina",
             "French Guiana",
             "Uruguay"
-        ]
+        ],
+        "backgroundColor": "#EFD6AC",
+        "textColor": "#183A37"
     },
     {
         "utc": -2,
         "name": "UTC-2",
         "locations": [
             "South Sandwich Islands" 
-        ]
+        ],
+        "backgroundColor": "#dde6f6",
+        "textColor": "#712d6f"
     },
     {
         "utc": -1,
@@ -114,7 +140,9 @@
         "locations": [
             "Azores",
             "Greenland"
-        ]
+        ],
+        "backgroundColor": "#7BE0C0",
+        "textColor": "#004513"
     },
     {
         "utc": 0,
@@ -124,7 +152,9 @@
             "Liberia",
             "Saint Helena",
             "Ivory Coast"
-        ]
+        ],
+        "backgroundColor": "#96CBE0",
+        "textColor": "#6b0039"
     },
     {
         "utc": 1,
@@ -137,7 +167,9 @@
             "Nigeria", 
             "Poland", 
             "Spain"
-        ]
+        ],
+        "backgroundColor": "#DED5B6",
+        "textColor": "#003d85"
     },
     {
         "utc": 2,
@@ -147,7 +179,9 @@
             "Burundi", 
             "Estonia", 
             "Zimbabwe"
-        ]
+        ],
+        "backgroundColor": "#DEABCB",
+        "textColor": "#240085"
     },
     {
         "utc": 3,
@@ -156,14 +190,18 @@
             "Saudi Arabia",
             "Uganda", 
             "Madagascar"
-        ]
+        ],
+        "backgroundColor": "#DED595",
+        "textColor": "#7f0c34"
     },
     {
         "utc": 3.5,
         "name": "UTC+3:30",
         "locations": [
             "Iran"
-        ]
+        ],
+        "backgroundColor": "#DEAFC3",
+        "textColor": "#2c2925"
     },
     {
         "utc": 4,
@@ -172,14 +210,18 @@
             "Dubai",
             "Georgia",
             "Réunion"
-        ]
+        ],
+        "backgroundColor": "#eddf93",
+        "textColor": "#523b3b"
     },
     {
         "utc": 4.5,
         "name": "UTC+4:30",
         "locations": [
             "Afghanistan"
-        ]
+        ],
+        "backgroundColor": "#d5dfe7",
+        "textColor": "#523b52"
     },
     {
         "utc": 5,
@@ -187,7 +229,9 @@
         "locations": [
             "Pakistan",
             "Turkmenistan"
-        ]
+        ],
+        "backgroundColor": "#C7FCE8",
+        "textColor": "#554d30"
     },
     {
         "utc": 5.5,
@@ -195,14 +239,18 @@
         "locations": [
             "Sri Lanka",
             "New Delhi"
-        ]
+        ],
+        "backgroundColor": "#E0D68B",
+        "textColor": "#390e1b"
     },
     {
         "utc": 5.75,
         "name": "UTC+5:45",
         "locations": [
             "Nepal"
-        ]
+        ],
+        "backgroundColor": "#c5ddbe",
+        "textColor": "#0e3938"
     },
     {
         "utc": 6,
@@ -210,14 +258,18 @@
         "locations": [
             "Bangladesh",
             "Kyrgyzstan"
-        ]
+        ],
+        "backgroundColor": "#fdfcf5",
+        "textColor": "#913b0f"
     },
     {
         "utc": 6.5,
         "name": "UTC+6:30",
         "locations": [
             "Myanmar"
-        ]
+        ],
+        "backgroundColor": "#f6dba9",
+        "textColor": "#133f99"
     },
     {
         "utc": 7,
@@ -226,7 +278,9 @@
             "Thailand",
             "Christmas Island",
             "Laos"
-        ]
+        ],
+        "backgroundColor": "#f5ffdb",
+        "textColor": "#710708"
     },
     {
         "utc": 8,
@@ -237,7 +291,9 @@
             "Hong Kong", 
             "Taiwan", 
             "Singapore"
-        ]
+        ],
+        "backgroundColor": "#baefe3",
+        "textColor": "#7d117e"
     },
     {
         "utc": 8.75,
@@ -245,7 +301,9 @@
         "locations": [
             "Border Village, South Australia",
             "Cocklebiddy, Western Australia"
-        ]
+        ],
+        "backgroundColor": "#eedfbf",
+        "textColor": "#6a242e"
     },
     {
         "utc": 9,
@@ -253,14 +311,18 @@
         "locations": [
             "Tokyo",
             "Seoul"
-        ]
+        ],
+        "backgroundColor": "#a1d8af",
+        "textColor": "#5c0771"
     },
     {
         "utc": 9.5,
         "name": "UTC+9:30",
         "locations": [
             "Northern Territory, Australia"
-        ]
+        ],
+        "backgroundColor": "#D9BDC0",
+        "textColor": "#15303b"
     },
     {
         "utc": 10,
@@ -268,7 +330,9 @@
         "locations": [
             "Guam",
             "Papua New Guinea"
-        ]
+        ],
+        "backgroundColor": "#ADD1DE",
+        "textColor": "#662534"
     },
     {
         "utc": 10.5,
@@ -276,7 +340,9 @@
         "locations": [
             "Adelaide, Australia",
             "South Australia"
-        ]
+        ],
+        "backgroundColor": "#B7DEAD",
+        "textColor": "#333194"
     },
     {
         "utc": 11,
@@ -284,7 +350,9 @@
         "locations": [
             "Sydney",
             "New Caledonia"
-        ]
+        ],
+        "backgroundColor": "#D9D1B8",
+        "textColor": "#303e3b"
     },
     {
         "utc": 12,
@@ -293,7 +361,9 @@
             "Fiji",
             "Norfolk Island",
             "Marshall Islands"
-        ]
+        ],
+        "backgroundColor": "#efadc6",
+        "textColor": "#4a4460"
     },
     {
         "utc": 13,
@@ -302,20 +372,26 @@
             "New Zealand",
             "Samoa",
             "Tonga"
-        ]
+        ],
+        "backgroundColor": "#94E38F",
+        "textColor": "#191cbc"
     },
     {
         "utc": 13.75,
         "name": "UTC+13:45",
         "locations": [
-            "Chatham Islands"
-        ]
+            "Chatham Islands, New Zealand"
+        ],
+        "backgroundColor": "#E0C57E",
+        "textColor": "#321179"
     },
     {
         "utc": 14,
         "name": "UTC+14",
         "locations": [
             "Line Islands, Kiribati"
-        ]
+        ],
+        "backgroundColor": "#ffff64",
+        "textColor": "#ff503a"
     }
 ]
