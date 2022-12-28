@@ -14,9 +14,14 @@ export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Pro
     }
 
     return <div className={"happy-new-year-modal-wrapper" + (celebrating ? "" : " invisible")} onClick={closeModal}>
-        <video autoPlay muted loop className="fireworks" src="fireworks.mp4" />
         <AnimatePresence>
-            {celebrating && 
+            {celebrating && <>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}>
+                    <video autoPlay muted loop className="fireworks" src="fireworks.mp4" />
+                </motion.div>
                 <motion.div
                     className="happy-new-year-modal"
                     onClick={(e: React.MouseEvent<HTMLElement>) => e.stopPropagation()}
@@ -33,6 +38,7 @@ export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Pro
                         in {timeZone.locations.join(' / ')}
                     </h2>
                 </motion.div>
+                </>
             }
         </AnimatePresence>
     </div>

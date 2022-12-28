@@ -25,7 +25,7 @@ const NEW_YEAR_DATE = {
     month: 11,
     day: 28,
     hour: 18,
-    minute: 4,
+    minute: 10,
     second: 0
 }
 
