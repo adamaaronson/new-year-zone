@@ -25,7 +25,7 @@ export function CountdownList({ timeZones, globalTime, newYear, onCountdownEnd }
                     />
                 </div>
                 <div className="countdown-list-timestamp">
-                    Celebrate at {getTimestampDescription(getNewYearInTimeZone(newYear, zone))}
+                    {getTimestampDescription(getNewYearInTimeZone(newYear, zone), zone)}
                 </div>
             </div>
             <div className="countdown-list-info">

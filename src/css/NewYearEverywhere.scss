@@ -1,0 +1,29 @@
+@import '../main.scss';
+
+.new-year-everywhere {
+    text-align: center;
+    font-size: 3rem;
+    margin: auto;
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: $thicc-border;
+    width: fit-content;
+    transform: rotate(-2deg);
+
+    * {
+        line-height: 1em;
+    }
+
+    .happy-new-year-everywhere {
+        margin-bottom: 1rem;
+    }
+
+    .its-year-everywhere {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 1400px) {
+        margin-top: 6rem;
+    }
+}

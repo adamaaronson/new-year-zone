@@ -3,4 +3,8 @@
 .footer {
     width: 100%;
     text-align: center;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }

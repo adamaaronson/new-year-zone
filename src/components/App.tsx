@@ -1,4 +1,5 @@
 import '../css/App.scss'
+import style from '../main.scss?inline'
 import { CountdownList } from './CountdownList'
 import timezones from "../data/timezones.json"
 import { Header } from './Header'
@@ -8,6 +9,7 @@ import { getNewYearInTimeZone, INTERVAL_MILLISECONDS } from './Countdown'
 import { TimeZone } from './TimeZone'
 import { HappyNewYearModal } from './HappyNewYearModal'
 import { Footer } from './Footer'
+import { NewYearEverywhere } from './NewYearEverywhere'
 
 const newYear = 2023;
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
@@ -41,6 +43,10 @@ export default function App() {
     const [celebrating, setCelebrating] = useState(false);
     const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
 
+    const root = document.documentElement
+    const backgroundColor = getComputedStyle(root).getPropertyValue("--background-color")
+    const textColor = getComputedStyle(root).getPropertyValue("--text-color")
+
     useEffect(() => {
         const updateCountdowns = () => {
             setGlobalTime(prevTime => {
@@ -71,7 +77,18 @@ export default function App() {
 
     return (
         <div className="app">
-            <div className="app-border"></div>
+            <div className="app-border">
+                <div className="app-not-border"></div>
+                <svg width="100%" height="100%" className="app-border-svg">
+                    <pattern width="100" height="100" viewBox="0 0 100 100" patternUnits="userSpaceOnUse" id="stripe-pattern">
+                        <path d="M 0 0 50 0 0 50 Z" fill={textColor}/>
+                        <path d="M 100 0 100 50 50 100 0 100 Z" fill={textColor}/>
+                    </pattern>
+
+                    <rect x="0" y="0" width="100%" height="100%" fill="url(#stripe-pattern)"></rect>
+                </svg>
+            </div>
+            
             <Header newYear={newYear}/>
             <HappyNewYearModal
                 celebrating={celebrating}
@@ -87,7 +104,7 @@ export default function App() {
                         onCountdownEnd={timeZone => celebrate(timeZone)}
                     />
                 :
-                    <></>
+                    <NewYearEverywhere newYear={newYear} />
                 }
                 
             </section>

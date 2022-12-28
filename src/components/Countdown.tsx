@@ -28,9 +28,9 @@ const HAPPY_NEW_YEAR = "Happy New Year!"
 const NEW_YEAR_DATE = {
     yearOffset: -1,
     month: 11,
-    day: 28,
-    hour: 5,
-    minute: 13
+    day: 27,
+    hour: 18,
+    minute: 50
 }
 
 function getSeconds(timeInMilliseconds: number) {
@@ -59,6 +59,12 @@ export function getDays(timeInMilliseconds: number) {
     return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY);
 }
 
+function isLocalTimeZone(timeZone: TimeZone) {
+    const localTimeZoneOffsetMinutes = new Date().getTimezoneOffset();
+    const timeZoneOffsetMinutes = timeZone.utc * MINUTES_PER_HOUR;
+    return timeZoneOffsetMinutes === -localTimeZoneOffsetMinutes;
+}
+
 export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
     const localNewYearDate = new Date(
         newYear + NEW_YEAR_DATE.yearOffset,
@@ -78,12 +84,16 @@ export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
     return timeZoneNewYearDate.getTime();
 }
 
-export function getTimestampDescription(timestamp: number) {
+export function getTimestampDescription(timestamp: number, timeZone: TimeZone) {
+    if (isLocalTimeZone(timeZone)) {
+        return "You are here!"
+    }
+
     const newYearLocalTime = new Date(timestamp).toLocaleTimeString([], { hour: "numeric", minute: "numeric" })
     const newYearLocalDate = new Date(timestamp).toLocaleDateString([], { month: "short", day: "numeric"})
     const newYearIsSoon = timestamp < Date.now() + MILLISECONDS_PER_HOUR * 23;
 
-    return (
+    return "Celebrate at " + (
         newYearLocalTime
     ) + (
         newYearIsSoon ? "" : " on " + newYearLocalDate

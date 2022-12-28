@@ -55,7 +55,7 @@ export function CountdownMain({ timeZone, globalTime, newYear, onCountdownEnd }:
         <div className="up-next main-up-next" ref={countdownContainerRef}>
             Up next:
             <div className="main-timestamp">
-                Celebrate at {getTimestampDescription(newYearInTimeZone)}
+                {getTimestampDescription(newYearInTimeZone, timeZone)}
             </div>
         </div>
         
