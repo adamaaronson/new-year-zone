@@ -13,7 +13,7 @@
 }
 
 .happy-new-year-modal {
-    transform: rotate(-2deg);
+    transform: rotate(-2deg) scale(1);
     background-color: $background-color;
     border: $thicc-border;
     padding: 2rem;
@@ -25,6 +25,7 @@
     }
 
     position: relative;
+    transition: 0.2s transform;
 }
 
 .happy-new-year-title {
@@ -56,4 +57,16 @@
     line-height: 0.9em;
     font-size: 2rem;
     cursor: pointer;
+}
+
+.fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 50%;
 }

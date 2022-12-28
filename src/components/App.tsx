@@ -43,7 +43,6 @@ function getTimeZoneData(): TimeZoneData {
 export default function App() {
     const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
     const [globalTime, setGlobalTime] = useState(Date.now());
-    // const [referenceTime, setReferenceTime] = useState(Date.now());
     const [celebrating, setCelebrating] = useState(false);
     const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
     const [backgroundColor, setBackgroundColor] = useState(defaultBackgroundColor)
@@ -86,6 +85,7 @@ export default function App() {
     }, [globalTime])
 
     const celebrate = (timeZone: TimeZone) => {
+        console.log("celebrating", timeZone.name)
         setTimeZoneCelebrating(timeZone);
         setCelebrating(true);
     }
@@ -130,15 +130,13 @@ export default function App() {
                 
             </section>
             <section className="countdown-list-section">
-                {timeZoneData.remainingTimeZones && timeZoneData.remainingTimeZones.length > 0 ?
+                {timeZoneData.remainingTimeZones && timeZoneData.remainingTimeZones.length > 0 &&
                     <CountdownList
                         globalTime={globalTime}
                         timeZones={timeZoneData.remainingTimeZones}
                         newYear={newYear}
                         onCountdownEnd={timeZone => celebrate(timeZone)}
                     />
-                :
-                    <></>
                 }
             </section>
             <Footer />

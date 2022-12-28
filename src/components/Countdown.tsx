@@ -12,21 +12,22 @@ const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
 const HAPPY_NEW_YEAR = "Happy New Year!"
 
-const NEW_YEAR_DATE = {
-    yearOffset: 0,
-    month: 0,
-    day: 1,
-    hour: 0,
-    minute: 0
-}
-
 // const NEW_YEAR_DATE = {
-//     yearOffset: -1,
-//     month: 11,
-//     day: 28,
-//     hour: 16,
-//     minute: 59
+//     yearOffset: 0,
+//     month: 0,
+//     day: 1,
+//     hour: 0,
+//     minute: 0
 // }
+
+const NEW_YEAR_DATE = {
+    yearOffset: -1,
+    month: 11,
+    day: 28,
+    hour: 18,
+    minute: 4,
+    second: 0
+}
 
 function getSeconds(timeInMilliseconds: number) {
     // add 1 because it makes countdown more satisfying
@@ -66,7 +67,8 @@ export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
         NEW_YEAR_DATE.month,
         NEW_YEAR_DATE.day,
         NEW_YEAR_DATE.hour, 
-        NEW_YEAR_DATE.minute
+        NEW_YEAR_DATE.minute,
+        NEW_YEAR_DATE.second
     );
 
     const localTimeZoneOffsetMinutes = new Date().getTimezoneOffset();
@@ -125,13 +127,17 @@ export function Countdown({ untilTime, globalTime, onCountdownEnd }: Props) {
     const time = untilTime - globalTime;
 
     useEffect(() => {
-        if (time <= 0) {
-            if (!complete) {
-                onCountdownEnd();
-                setComplete(true);
-            }
+        if (time <= 0 && !complete) {
+            onCountdownEnd();
+            setComplete(true);
         }
     }, [time])
+
+    useEffect(() => {
+        if (time > 0) {
+            setComplete(false);
+        }
+    }, [untilTime])
 
     return <div className="countdown">
         {getTimeString(time)}
