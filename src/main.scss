@@ -1,6 +1,6 @@
 :root {
-    --background-color: #eeeeee;
-    --text-color: #111111;
+    --background-color: #ffffff;
+    --text-color: #ffffff;
 }
 
 $background-color: var(--background-color);
@@ -12,11 +12,6 @@ $thicc-border: 8px solid $text-color;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-}
-
-* {
-    transition: color 0.3s background-color 0.3s;
 }
 
 :root {

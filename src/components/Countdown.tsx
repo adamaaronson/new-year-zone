@@ -12,22 +12,23 @@ const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
 const HAPPY_NEW_YEAR = "Happy New Year!"
 
-// const NEW_YEAR_DATE = {
-//     yearOffset: 0,
-//     month: 0,
-//     day: 1,
-//     hour: 0,
-//     minute: 0
-// }
-
 const NEW_YEAR_DATE = {
-    yearOffset: -1,
-    month: 11,
-    day: 28,
-    hour: 5,
-    minute: 6,
+    yearOffset: 0,
+    month: 0,
+    day: 1,
+    hour: 0,
+    minute: 0,
     second: 0
 }
+
+// const NEW_YEAR_DATE = {
+//     yearOffset: -1,
+//     month: 11,
+//     day: 28,
+//     hour: 5,
+//     minute: 6,
+//     second: 0
+// }
 
 function getSeconds(timeInMilliseconds: number) {
     // add 1 because it makes countdown more satisfying
@@ -83,7 +84,7 @@ export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
 
 export function getTimestampDescription(timestamp: number, timeZone: TimeZone) {
     if (isLocalTimeZone(timeZone)) {
-        return "You are here!"
+        return <><i className="fa fa-map-marker"></i> You are here</>
     }
 
     const newYearLocalTime = new Date(timestamp).toLocaleTimeString([], { hour: "numeric", minute: "numeric" })
