@@ -18,16 +18,17 @@ export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Pro
             {celebrating && <>
                 <motion.div
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    animate={{ opacity: 1}}
                     exit={{ opacity: 0 }}>
                     <video autoPlay muted loop className="fireworks" src="fireworks.mp4" />
                 </motion.div>
                 <motion.div
                     className="happy-new-year-modal"
                     onClick={(e: React.MouseEvent<HTMLElement>) => e.stopPropagation()}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}>
+                    initial={{ scale: 0, rotate: "0deg" }}
+                    animate={{ scale: 1, rotate: "-2deg" }}
+                    exit={{ scale: 0, rotate: "0deg" }}
+                    transition={{ ease: "easeInOut", duration: 0.3 }}>
                     <div className="x-button" onClick={closeModal}>
                         X
                     </div>

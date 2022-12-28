@@ -24,8 +24,8 @@ const NEW_YEAR_DATE = {
     yearOffset: -1,
     month: 11,
     day: 28,
-    hour: 18,
-    minute: 10,
+    hour: 5,
+    minute: 6,
     second: 0
 }
 
