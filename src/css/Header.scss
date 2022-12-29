@@ -13,6 +13,10 @@
     @media (min-width: 1200px) {
         margin-bottom: -1rem;
     }
+
+    @media (max-width: 500px) {
+        margin-bottom: 2rem;
+    }
 }
 
 .header-title {
