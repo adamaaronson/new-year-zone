@@ -17,20 +17,6 @@
     align-self: flex-end;
 }
 
-.buttons {
-    font-size: 1rem;
-    display: flex;
-    gap: 1rem;
-    flex-direction: row;
-    align-items: flex-end;
-
-    @media (max-width: 600px) {
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 1.5rem;
-    }
-}
-
 .main-time-zone-name {
     text-align: right;
     line-height: 1.2em;

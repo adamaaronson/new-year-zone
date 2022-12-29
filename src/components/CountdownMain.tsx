@@ -59,14 +59,6 @@ export function CountdownMain({ timeZone, globalTime, newYear, onCountdownEnd }:
                     {getTimestampDescription(newYearInTimeZone, timeZone)}
                 </div>
             </div>
-            <div className="buttons">
-                <button className="about-button">
-                    About
-                </button>
-                <button className="share-button">
-                    Share
-                </button>
-            </div>
         </div>
         
         <div className="main-countdown-meat">
