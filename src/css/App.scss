@@ -69,3 +69,26 @@ button {
         color: $background-color;
     }
 }
+
+.nav-links {
+    line-height: 1em;
+    margin-bottom: -1em;
+    font-size: 1.25rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1.2rem;
+
+    a, .share-link {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .share-link {
+        cursor: pointer;
+    }
+}

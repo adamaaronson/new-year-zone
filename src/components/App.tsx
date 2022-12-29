@@ -1,5 +1,4 @@
 import '../css/App.scss'
-import style from '../main.scss?inline'
 import { CountdownList } from './CountdownList'
 import timezones from "../data/timezones.json"
 import { Header } from './Header'
@@ -10,10 +9,10 @@ import { TimeZone } from './TimeZone'
 import { HappyNewYearModal } from './HappyNewYearModal'
 import { Footer } from './Footer'
 import { NewYearEverywhere } from './NewYearEverywhere'
-import { AboutModal } from './AboutModal'
 
 const newYear = 2023;
 const INTERVAL_MILLISECONDS = 100;
+const COPIED_MILLISECONDS = 2 * 1000 // 2 seconds
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
 
 const defaultBackgroundColor = timeZonesInOrder[0].backgroundColor;
@@ -45,10 +44,10 @@ export default function App() {
     const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
     const [globalTime, setGlobalTime] = useState(Date.now());
     const [celebrating, setCelebrating] = useState(false);
-    const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
-    const [aboutVisible, setAboutVisible] = useState(false);
-    const [backgroundColor, setBackgroundColor] = useState(defaultBackgroundColor)
-    const [textColor, setTextColor] = useState(defaultTextColor)
+    const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0]);
+    const [backgroundColor, setBackgroundColor] = useState(defaultBackgroundColor);
+    const [copied, setCopied] = useState(false);
+    const [textColor, setTextColor] = useState(defaultTextColor);
 
     useEffect(() => {
         const newBackgroundColor =
@@ -77,8 +76,6 @@ export default function App() {
                 }
 
                 const now = Date.now();
-                // const interval = now - referenceTime;
-                // setReferenceTime(now);
                 return now;
             })
         }
@@ -98,6 +95,29 @@ export default function App() {
         }
     }, [celebrating])
 
+    useEffect(() => {
+        if (copied) {
+            setTimeout(() => {
+                setCopied(false)
+            }, COPIED_MILLISECONDS)
+        }
+    }, [copied])
+
+    function share() {
+        const text = `Celebrate the New Year in every time zone! https://newyear.zone`
+
+        if ("share" in navigator) {
+            // can use Web Share API
+            navigator.share({
+                text: text
+            })
+        } else {
+            // fallback
+            window.navigator.clipboard.writeText(text);
+            setCopied(true);
+        }
+    }
+
     return (
         <div className="app">
             <div className="app-border">
@@ -111,15 +131,19 @@ export default function App() {
                     <rect x="0" y="0" width="100%" height="100%" fill="url(#stripe-pattern)"></rect>
                 </svg>
             </div>
-            
+            <div className="nav-links">
+                <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+                    About
+                </a>
+                <div className="share-link" onClick={share}>
+                    {copied ? "Copied" : "Share"}
+                </div>
+            </div>
             <Header newYear={newYear}/>
             <HappyNewYearModal
                 celebrating={celebrating}
                 setCelebrating={setCelebrating}
                 timeZone={timeZoneCelebrating}
-            />
-            <AboutModal
-                visible={aboutVisible}
             />
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
