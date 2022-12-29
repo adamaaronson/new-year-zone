@@ -7,4 +7,10 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
+    a {
+        color: $text-color;
+        // text-decoration: none;
+        // border-bottom: $standard-border;
+    }
 }

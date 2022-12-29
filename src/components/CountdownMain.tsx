@@ -53,9 +53,19 @@ export function CountdownMain({ timeZone, globalTime, newYear, onCountdownEnd }:
 
     return <div className="main-countdown">
         <div className="up-next main-up-next" ref={countdownContainerRef}>
-            Up next:
-            <div className="main-timestamp">
-                {getTimestampDescription(newYearInTimeZone, timeZone)}
+            <div className="up-next-text">
+                Up next:
+                <div className="main-timestamp">
+                    {getTimestampDescription(newYearInTimeZone, timeZone)}
+                </div>
+            </div>
+            <div className="buttons">
+                <button className="about-button">
+                    About
+                </button>
+                <button className="share-button">
+                    Share
+                </button>
             </div>
         </div>
         

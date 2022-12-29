@@ -49,3 +49,18 @@ body {
     height: calc(100% - 4rem);
     background-color: $background-color;
 }
+
+a {
+    color: $text-color;
+}
+
+button {
+    font: inherit;
+    text-transform: uppercase;
+    border: none;
+    background: $background-color;
+    color: $text-color;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: $standard-border;
+}

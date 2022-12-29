@@ -10,6 +10,7 @@ import { TimeZone } from './TimeZone'
 import { HappyNewYearModal } from './HappyNewYearModal'
 import { Footer } from './Footer'
 import { NewYearEverywhere } from './NewYearEverywhere'
+import { AboutModal } from './AboutModal'
 
 const newYear = 2023;
 const INTERVAL_MILLISECONDS = 100;
@@ -45,6 +46,7 @@ export default function App() {
     const [globalTime, setGlobalTime] = useState(Date.now());
     const [celebrating, setCelebrating] = useState(false);
     const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(timeZonesInOrder[0])
+    const [aboutVisible, setAboutVisible] = useState(false);
     const [backgroundColor, setBackgroundColor] = useState(defaultBackgroundColor)
     const [textColor, setTextColor] = useState(defaultTextColor)
 
@@ -115,6 +117,9 @@ export default function App() {
                 celebrating={celebrating}
                 setCelebrating={setCelebrating}
                 timeZone={timeZoneCelebrating}
+            />
+            <AboutModal
+                visible={aboutVisible}
             />
             <section className="main-countdown-section">
                 {timeZoneData.soonestTimeZone ? 
