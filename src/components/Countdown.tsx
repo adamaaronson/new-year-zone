@@ -92,7 +92,7 @@ export function getTimestampDescription(timestamp: number, timeZone: TimeZone) {
     return "Celebrate at " + (
         newYearLocalTime.replace(":00", "")
     ) + (
-        newYearIsSoon ? "" : " on " + newYearLocalDate
+        newYearIsSoon ? "" : " on " + newYearLocalDate.replace(" ", '\xa0')
     )
 }
 
