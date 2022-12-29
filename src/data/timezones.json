@@ -268,9 +268,9 @@
         "utc": 7,
         "name": "UTC+7",
         "locations": [
-            "Jakarta",
             "Vietnam",
-            "Thailand" 
+            "Thailand",
+            "Jakarta"
         ],
         "backgroundColor": "#f5ffdb",
         "textColor": "#710708"

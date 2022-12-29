@@ -63,4 +63,9 @@ button {
     cursor: pointer;
     padding: 0.5rem;
     border: $standard-border;
+
+    &:hover {
+        background: $text-color;
+        color: $background-color;
+    }
 }

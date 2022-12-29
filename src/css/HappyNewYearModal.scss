@@ -49,10 +49,6 @@
     font-size: 2rem;
 }
 
-.invisible {
-    display: none;
-}
-
 .x-button {
     position: absolute;
     top: 1rem;
@@ -72,4 +68,12 @@
     left: 50%;
     transform: translate(-50%,-50%);
     opacity: 50%;
+}
+
+.share-button {
+    align-self: center;
+
+    .share {
+        margin-left: 0.5em;
+    }
 }
