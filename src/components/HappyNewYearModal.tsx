@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import '../css/HappyNewYearModal.scss';
 import { isLocalTimeZone } from "./Countdown";
+import { Firework } from "./Firework";
 import { TimeZone } from './TimeZone';
 
 interface Props {
@@ -59,7 +60,11 @@ export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Pro
                 animate={{ opacity: 1}}
                 exit={{ opacity: 0 }}
                 transition={{ ease: "easeInOut", duration: 0.3 }}>
-                <video autoPlay muted loop className="fireworks" src="fireworks.mp4" />
+                <div className="fireworks-background">
+                    <Firework offsetX={-25} delay={0} />
+                    <Firework offsetX={0} delay={0.3} />
+                    <Firework offsetX={25}  delay={0.6} />
+                </div>
             </motion.div>
             <motion.div
                 className="happy-new-year-modal"
