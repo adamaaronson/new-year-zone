@@ -110,7 +110,11 @@ export default function App() {
             // can use Web Share API
             navigator.share({
                 text: text
-            })
+            }).then(() => {
+                console.log('Shared');
+            }).catch(err => {
+                console.error('Error sharing:', err);
+            });
         } else {
             // fallback
             window.navigator.clipboard.writeText(text);
