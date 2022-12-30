@@ -106,14 +106,14 @@ export default function App() {
     function share() {
         const text = `Celebrate the New Year in every time zone! https://newyear.zone`
 
-        if ("share" in navigator) {
+        if ("share" in navigator && navigator.canShare({text: text})) {
             // can use Web Share API
             navigator.share({
                 text: text
             }).then(() => {
-                console.log('Shared');
+                console.log('Shared text');
             }).catch(err => {
-                console.error('Error sharing:', err);
+                console.error('Error sharing text:', err);
             });
         } else {
             // fallback
