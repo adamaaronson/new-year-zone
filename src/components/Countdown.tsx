@@ -10,23 +10,23 @@ const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE;
 const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 const MILLISECONDS_PER_DAY = MILLISECONDS_PER_HOUR * HOURS_PER_DAY;
 
-// const NEW_YEAR_DATE = {
-//     yearOffset: 0,
-//     month: 0,
-//     day: 1,
-//     hour: 0,
-//     minute: 0,
-//     second: 0
-// }
-
 const NEW_YEAR_DATE = {
-    yearOffset: -1,
-    month: 11,
-    day: 30,
+    yearOffset: 0,
+    month: 0,
+    day: 1,
     hour: 0,
     minute: 0,
     second: 0
 }
+
+// const NEW_YEAR_DATE = {
+//     yearOffset: -1,
+//     month: 11,
+//     day: 29,
+//     hour: 16,
+//     minute: 7,
+//     second: 0
+// }
 
 function getSeconds(timeInMilliseconds: number) {
     // add 1 because it makes countdown more satisfying
@@ -37,21 +37,21 @@ function getMinutes(timeInMilliseconds: number) {
     if (timeInMilliseconds < 0) {
         timeInMilliseconds = 0;
     }
-    return Math.floor(timeInMilliseconds / MILLISECONDS_PER_MINUTE % MINUTES_PER_HOUR).toString().padStart(2, '0');
+    return Math.floor((timeInMilliseconds + MILLISECONDS_PER_SECOND) / MILLISECONDS_PER_MINUTE % MINUTES_PER_HOUR).toString().padStart(2, '0');
 }
 
 function getHours(timeInMilliseconds: number) {
     if (timeInMilliseconds < 0) {
         timeInMilliseconds = 0;
     }
-    return Math.floor(timeInMilliseconds / MILLISECONDS_PER_HOUR % HOURS_PER_DAY).toString().padStart(2, '0');
+    return Math.floor((timeInMilliseconds + MILLISECONDS_PER_SECOND) / MILLISECONDS_PER_HOUR % HOURS_PER_DAY).toString().padStart(2, '0');
 }
 
 export function getDays(timeInMilliseconds: number) {
     if (timeInMilliseconds < 0) {
         timeInMilliseconds = 0;
     }
-    return Math.floor(timeInMilliseconds / MILLISECONDS_PER_DAY);
+    return Math.floor((timeInMilliseconds + MILLISECONDS_PER_SECOND) / MILLISECONDS_PER_DAY);
 }
 
 export function isLocalTimeZone(timeZone: TimeZone) {

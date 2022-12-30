@@ -4,7 +4,7 @@
     text-align: center;
     font-size: 3rem;
     margin: auto;
-    margin-top: 8rem;
+    margin-top: 10rem;
     margin-bottom: 2rem;
     padding: 2rem; 
     border: $thicc-border;
@@ -17,6 +17,10 @@
 
     .happy-new-year-title {
         margin-bottom: 1rem;
+
+        @media (max-width: 900px) {
+            font-size: 5rem;
+        }
     }
 
     .its-year-everywhere {
