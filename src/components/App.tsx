@@ -84,7 +84,6 @@ export default function App() {
     }, [globalTime])
 
     const celebrate = (timeZone: TimeZone) => {
-        console.log("celebrating", timeZone.name)
         setTimeZoneCelebrating(timeZone);
         setCelebrating(true);
     }
