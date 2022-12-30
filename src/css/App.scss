@@ -1,5 +1,7 @@
 @import '../main.scss';
 
+$margin-change-threshold: 800px;
+
 html {
     height: 100%;
 }
@@ -27,7 +29,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
 
-    @media (max-width: 800px) {
+    @media (max-width: $margin-change-threshold) {
         margin: 4rem 4rem;
     }
 }
@@ -90,5 +92,9 @@ button {
 
     .share-link {
         cursor: pointer;
+    }
+
+    @media (min-width: $margin-change-threshold) {
+        margin-right: -4rem;
     }
 }
