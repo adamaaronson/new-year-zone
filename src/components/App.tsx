@@ -132,7 +132,7 @@ export default function App() {
                 </svg>
             </div>
             <div className="nav-links">
-                <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
+                <a href="https://aaronson.org/blog/new-year-zone" target="_blank" rel="noopener noreferrer">
                     About
                 </a>
                 <div className="share-link" onClick={share}>
