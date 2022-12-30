@@ -41,7 +41,7 @@ export function HappyNewYearModal({ timeZone, celebrating, setCelebrating }: Pro
     function share(timeZone: TimeZone) {
         const text = `I celebrated the New Year in ${timeZone.locations.join(' / ')} on New Year Zone! See who's up next! https://newyear.zone`
 
-        if ("share" in navigator) {
+        if ("share" in navigator && navigator.canShare({text: text})) {
             // can use Web Share API
             navigator.share({
                 text: text
