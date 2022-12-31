@@ -10,6 +10,8 @@
     border: $thicc-border;
     width: fit-content;
     transform: rotate(-2deg);
+    position: relative;
+    z-index: -1;
 
     * {
         line-height: 0.9em;
