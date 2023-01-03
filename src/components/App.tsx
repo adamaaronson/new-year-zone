@@ -10,7 +10,7 @@ import { HappyNewYearModal } from './HappyNewYearModal'
 import { Footer } from './Footer'
 import { NewYearEverywhere } from './NewYearEverywhere'
 
-const newYear = 2023;
+const newYear = 2024;
 const INTERVAL_MILLISECONDS = 100;
 const COPIED_MILLISECONDS = 2 * 1000 // 2 seconds
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
