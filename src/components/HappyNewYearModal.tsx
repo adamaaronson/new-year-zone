@@ -9,7 +9,9 @@ import { faShareSquare } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   timeZone: TimeZone;
+  newYear: number;
   celebrating: boolean;
+  remainingTimeZones: TimeZone[];
   setCelebrating: (celebrating: boolean) => void;
 }
 
@@ -18,7 +20,9 @@ const COPIED_MILLISECONDS = 2 * 1000; // 2 seconds
 
 export function HappyNewYearModal({
   timeZone,
+  newYear,
   celebrating,
+  remainingTimeZones,
   setCelebrating,
 }: Props) {
   const [copied, setCopied] = useState(false);
@@ -92,6 +96,11 @@ export function HappyNewYearModal({
             {!isLocalTimeZone(timeZone) && (
               <h2 className="happy-new-year-subtitle">
                 in {timeZone.locations.join(" / ")}
+              </h2>
+            )}
+            {remainingTimeZones.length === 0 && (
+              <h2 className="happy-new-year-subsubtitle">
+                It's {newYear} everywhere! Time to switch things up...
               </h2>
             )}
             <button className="share-button" onClick={() => share(timeZone)}>

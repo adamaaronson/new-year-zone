@@ -8,42 +8,42 @@ import { getNewYearInTimeZone } from "./Countdown";
 import { TimeZone } from "./TimeZone";
 import { HappyNewYearModal } from "./HappyNewYearModal";
 import { Footer } from "./Footer";
-import { NewYearEverywhere } from "./NewYearEverywhere";
 
-const newYear = 2025;
 const INTERVAL_MILLISECONDS = 100;
 const COPIED_MILLISECONDS = 2 * 1000; // 2 seconds
 const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
+const firstTimeZone = timeZonesInOrder[0];
+const lastTimeZone = timeZonesInOrder[timeZonesInOrder.length - 1];
 
-const defaultBackgroundColor = timeZonesInOrder[0].backgroundColor;
-const defaultTextColor = timeZonesInOrder[0].textColor;
+const nextYearInBakerIsland = () => {
+  const currentTime = Date.now();
+  const currentYear = new Date().getFullYear();
+  const nextYear = currentYear + 1;
+  const nextNextYear = nextYear + 1;
+
+  if (currentTime < getNewYearInTimeZone(currentYear, lastTimeZone)) {
+    // it's the new year here, but not in Baker Island
+    return currentYear;
+  } else if (currentTime < getNewYearInTimeZone(nextYear, lastTimeZone)) {
+    // it's neither the new year here or in Baker Island
+    return nextYear;
+  } else {
+    // it's past the new year both here and Baker Island, and we're testing
+    return nextNextYear;
+  }
+};
+
+const defaultBackgroundColor = firstTimeZone.backgroundColor;
+const defaultTextColor = firstTimeZone.textColor;
 
 interface TimeZoneData {
   soonestTimeZone: TimeZone | null;
-  remainingTimeZones: TimeZone[] | null;
-}
-
-function getTimeZoneData(): TimeZoneData {
-  const now = Date.now();
-  const soonestTimeZoneIndex = timeZonesInOrder.findIndex(
-    (zone) => getNewYearInTimeZone(newYear, zone) > now
-  );
-
-  if (soonestTimeZoneIndex === -1) {
-    return {
-      soonestTimeZone: null,
-      remainingTimeZones: null,
-    };
-  }
-
-  return {
-    soonestTimeZone: timeZonesInOrder[soonestTimeZoneIndex],
-    remainingTimeZones: timeZonesInOrder.slice(soonestTimeZoneIndex + 1),
-  };
+  remainingTimeZones: TimeZone[];
 }
 
 export default function App() {
-  const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData());
+  const [newYear, setNewYear] = useState(() => nextYearInBakerIsland());
+  const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData(newYear));
   const [globalTime, setGlobalTime] = useState(Date.now());
   const [celebrating, setCelebrating] = useState(false);
   const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(
@@ -54,6 +54,24 @@ export default function App() {
   );
   const [copied, setCopied] = useState(false);
   const [textColor, setTextColor] = useState(defaultTextColor);
+
+  function getTimeZoneData(newNewYear: number): TimeZoneData {
+    const now = Date.now();
+    const soonestTimeZoneIndex = timeZonesInOrder.findIndex(
+      (zone) => getNewYearInTimeZone(newNewYear, zone) > now
+    );
+
+    if (soonestTimeZoneIndex === -1) {
+      return {
+        soonestTimeZone: null,
+        remainingTimeZones: [],
+      };
+    }
+    return {
+      soonestTimeZone: timeZonesInOrder[soonestTimeZoneIndex],
+      remainingTimeZones: timeZonesInOrder.slice(soonestTimeZoneIndex + 1),
+    };
+  }
 
   useEffect(() => {
     const newBackgroundColor = timeZoneData.soonestTimeZone
@@ -94,7 +112,8 @@ export default function App() {
 
   useEffect(() => {
     if (!celebrating) {
-      setTimeZoneData(getTimeZoneData());
+      setNewYear(nextYearInBakerIsland());
+      setTimeZoneData(getTimeZoneData(nextYearInBakerIsland()));
     }
   }, [celebrating]);
 
@@ -161,31 +180,30 @@ export default function App() {
       <Header newYear={newYear} />
       <HappyNewYearModal
         celebrating={celebrating}
+        newYear={newYear}
+        remainingTimeZones={timeZoneData.remainingTimeZones}
         setCelebrating={setCelebrating}
         timeZone={timeZoneCelebrating}
       />
       <section className="main-countdown-section">
-        {timeZoneData.soonestTimeZone ? (
+        {timeZoneData.soonestTimeZone && (
           <CountdownMain
             globalTime={globalTime}
             timeZone={timeZoneData.soonestTimeZone}
             newYear={newYear}
             onCountdownEnd={(timeZone) => celebrate(timeZone)}
           />
-        ) : (
-          <NewYearEverywhere newYear={newYear} />
         )}
       </section>
       <section className="countdown-list-section">
-        {timeZoneData.remainingTimeZones &&
-          timeZoneData.remainingTimeZones.length > 0 && (
-            <CountdownList
-              globalTime={globalTime}
-              timeZones={timeZoneData.remainingTimeZones}
-              newYear={newYear}
-              onCountdownEnd={(timeZone) => celebrate(timeZone)}
-            />
-          )}
+        {timeZoneData.remainingTimeZones.length > 0 && (
+          <CountdownList
+            globalTime={globalTime}
+            timeZones={timeZoneData.remainingTimeZones}
+            newYear={newYear}
+            onCountdownEnd={(timeZone) => celebrate(timeZone)}
+          />
+        )}
       </section>
       <Footer />
     </div>

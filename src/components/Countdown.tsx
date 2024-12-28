@@ -69,8 +69,8 @@ export function isLocalTimeZone(timeZone: TimeZone) {
   return timeZoneOffsetMinutes === -localTimeZoneOffsetMinutes;
 }
 
-export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
-  const localNewYearDate = new Date(
+export function getLocalNewYearDate(newYear: number) {
+  return new Date(
     newYear + NEW_YEAR_DATE.yearOffset,
     NEW_YEAR_DATE.month,
     NEW_YEAR_DATE.day,
@@ -78,6 +78,10 @@ export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
     NEW_YEAR_DATE.minute,
     NEW_YEAR_DATE.second
   );
+}
+
+export function getNewYearInTimeZone(newYear: number, timeZone: TimeZone) {
+  const localNewYearDate = getLocalNewYearDate(newYear);
 
   const localTimeZoneOffsetMinutes = new Date().getTimezoneOffset();
   const timeZoneOffsetMinutes = timeZone.utc * MINUTES_PER_HOUR;
