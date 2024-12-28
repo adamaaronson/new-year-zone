@@ -28,7 +28,7 @@ const nextYearInBakerIsland = () => {
     // it's neither the new year here or in Baker Island
     return nextYear;
   } else {
-    // it's past the new year both here and Baker Island, and we're testing
+    // it's past the fake, early new year both here and Baker Island
     return nextNextYear;
   }
 };
