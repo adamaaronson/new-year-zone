@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TimeZone } from "./TimeZone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { now } from "./App";
 
 const MILLISECONDS_PER_SECOND = 1000;
 const SECONDS_PER_MINUTE = 60;
@@ -112,7 +113,7 @@ export function getTimestampDescription(timestamp: number, timeZone: TimeZone) {
     month: "short",
     day: "numeric",
   });
-  const newYearIsSoon = timestamp < Date.now() + MILLISECONDS_PER_HOUR * 23;
+  const newYearIsSoon = timestamp < now() + MILLISECONDS_PER_HOUR * 23;
 
   return (
     "Celebrate at " +

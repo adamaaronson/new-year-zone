@@ -15,21 +15,21 @@ const timeZonesInOrder = timezones.sort((a, b) => b.utc - a.utc);
 const firstTimeZone = timeZonesInOrder[0];
 const lastTimeZone = timeZonesInOrder[timeZonesInOrder.length - 1];
 
+export const now = () => {
+  return Date.now();
+};
+
 const nextYearInBakerIsland = () => {
-  const currentTime = Date.now();
-  const currentYear = new Date().getFullYear();
+  const currentTime = now();
+  const currentYear = new Date(currentTime).getFullYear();
   const nextYear = currentYear + 1;
-  const nextNextYear = nextYear + 1;
 
   if (currentTime < getNewYearInTimeZone(currentYear, lastTimeZone)) {
     // it's the new year here, but not in Baker Island
     return currentYear;
-  } else if (currentTime < getNewYearInTimeZone(nextYear, lastTimeZone)) {
+  } else {
     // it's neither the new year here or in Baker Island
     return nextYear;
-  } else {
-    // it's past the fake, early new year both here and Baker Island
-    return nextNextYear;
   }
 };
 
@@ -44,7 +44,7 @@ interface TimeZoneData {
 export default function App() {
   const [newYear, setNewYear] = useState(() => nextYearInBakerIsland());
   const [timeZoneData, setTimeZoneData] = useState(getTimeZoneData(newYear));
-  const [globalTime, setGlobalTime] = useState(Date.now());
+  const [globalTime, setGlobalTime] = useState(now());
   const [celebrating, setCelebrating] = useState(false);
   const [timeZoneCelebrating, setTimeZoneCelebrating] = useState(
     timeZonesInOrder[0]
@@ -56,9 +56,9 @@ export default function App() {
   const [textColor, setTextColor] = useState(defaultTextColor);
 
   function getTimeZoneData(newNewYear: number): TimeZoneData {
-    const now = Date.now();
+    const currentTime = now();
     const soonestTimeZoneIndex = timeZonesInOrder.findIndex(
-      (zone) => getNewYearInTimeZone(newNewYear, zone) > now
+      (zone) => getNewYearInTimeZone(newNewYear, zone) > currentTime
     );
 
     if (soonestTimeZoneIndex === -1) {
@@ -97,8 +97,8 @@ export default function App() {
           return 0;
         }
 
-        const now = Date.now();
-        return now;
+        const currentTime = now();
+        return currentTime;
       });
     };
 
